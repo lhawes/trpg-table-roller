@@ -16,7 +16,9 @@ export const TableList: React.FC = ({ }) => {
 
   return (
     <>
-      {tables.map((tableEntry: Table, i: number) => <TableComponent table={tableEntry} tableIndex={i} key={`table${i}`}/>)}
+      {tables.map((tableEntry: Table, i: number) =>
+        <TableComponent table={tableEntry} tableIndex={i} key={`table${i}`}/>
+      )}
     </>
   )
 }

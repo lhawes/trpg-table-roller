@@ -12,11 +12,7 @@ export const DispatchContext = React.createContext(defaultDispatch);
 
 const App = () => {
   const [state, dispatch] = useReducer(rootReducer, rootInitialState);
-
-  // const firstTable = useMemo(() => { getGeneratorTables(state)}, [])
-  const tables = getGeneratorTables(state) || [];
   const generatorName = getGeneratorName(state);
-
   const randomRoll = rollGenerator(state);
 
   return (
@@ -28,7 +24,7 @@ const App = () => {
           </header>
           {generatorName }
           <TableList />
-          <div>random roll: { randomRoll.map((choice:string)=> <span>{choice}</span>) }</div>
+          <div>random roll: { randomRoll.map((choice:string, i: number)=> <span key={`randomroll${i}`}>{choice}</span>) }</div>
         </div>
       </StateContext.Provider>
     </DispatchContext.Provider>

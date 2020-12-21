@@ -18,6 +18,10 @@ export const generatorInitialState: RPGGenerator = {
 
 export const generatorReducer = (state: RPGGenerator = generatorInitialState, action: AnyAction) => {
   const newState: Table = JSON.parse(JSON.stringify(state));
+  // clear error
+  // try action
+  // catch error
+
 
   switch (action.type) {
     case '':
