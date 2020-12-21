@@ -1,6 +1,6 @@
 import React from 'react'
 /** @jsx jsx */
-import { jsx, css } from '@emotion/react/macro'
+import { jsx, css } from '@emotion/react'
 
 import { Table } from '../types/Table';
 
@@ -11,6 +11,20 @@ export interface TableProps {
 
 const tableStyles = css({
   border: '1px dashed black'
+});
+const tableNameStyle = css({
+  display: 'block',
+})
+const tableEntryContainerStyle = css({
+  display: 'block'
+})
+const oddTableEntryStyle = css({
+  display: 'block',
+  color: 'red'
+})
+const evenTableEntryStyle = css({
+  display: 'block',
+  color: 'blue'
 })
 
 export const TableComponent: React.FC<TableProps>= ({ table, tableIndex }) => {
@@ -24,10 +38,13 @@ export const TableComponent: React.FC<TableProps>= ({ table, tableIndex }) => {
 
   return (
     <div css={tableStyles}>
-        <p>{tableName}</p>
+      <span css={tableNameStyle}>{tableName}</span>
+      <div css={tableEntryContainerStyle}>
         { tableEntries.map((entry:string, i: number) => {
-          return (<span key={i}>{entry}</span>);
+          const style = i % 2 === 0 ? evenTableEntryStyle : oddTableEntryStyle;
+          return (<span css={style} key={i}>{entry}</span>);
         })}
       </div>
+    </div>
   );
 }
