@@ -4,7 +4,13 @@ export interface RPGGenerator {
   generatorName: string,
   textTemplate: string,
   tables: Table[],
-  operations: any[],
+  operations: TableOperation[],
+}
+
+export interface TableOperation {
+  currentTableIndex: number,
+  entryIndexs: number[], // array of entry indexs that trigger the result,
+  nextTableIndex: number, // not currentTableIndex
 }
 
 /*
@@ -15,9 +21,7 @@ Roll table n, if result x then roll on table m.
 [tableId, entryId, tableId]
 
 interface operation {
-  currentTableIndex: number,
-  entryIndexs: number[], // array of entry indexs that trigger the result,
-  nextTableIndex: number, // not currentTableIndex
+
 }
 
 textTemplate:
