@@ -1,19 +1,19 @@
 import { useContext, useMemo } from "react";
-import { StateContext } from "../App";
-import { AppState } from "../state/rootInitialState";
-import { tableStateKey } from "../state/table/tableReducer";
+import { Table } from '../types/Table';
 
+export interface TableProps {
+  table: Table;
+  tableIndex: number;
+}
 
-export const Table: React.FC = ({}) => {
+export const TableComponent: React.FC<TableProps>= ({ table, tableIndex }) => {
   // const dispatch = useContext(DispatchContext);
-  const state: AppState = useContext(StateContext);
+  // const state: AppState = useContext(StateContext);
   // const tableName = useMemo(() => selector(state), [state[tableStateKey]]);
   // const tableEntries = useMemo(() => selector(state), [state[tableStateKey]]);
 
-  const tableName = 'asdfz'
-  const tableEntries = ['aaaaa', 'ddddd'];
-
-  console.log(tableEntries)
+  const tableName = table.name;
+  const tableEntries = table.entries;
 
   return (
     <>

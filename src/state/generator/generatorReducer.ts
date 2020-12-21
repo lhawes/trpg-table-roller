@@ -1,13 +1,15 @@
 import { AnyAction } from "../../types/anyAction";
 import { RPGGenerator } from "../../types/Generator";
 import { Table } from "../../types/Table";
-import { tableInitialState } from "../table/tableReducer";
 
 export const generatorStateKey: string = 'generator';
 
 export const generatorInitialState: RPGGenerator = {
-  generatorName: '',
-  tables: [tableInitialState],
+  generatorName: 'generatopr',
+  tables: [{
+    name: 'table',
+    entries: ['one', 'two']
+  }],
   operations: [],
 }
 

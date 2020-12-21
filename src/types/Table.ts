@@ -1,4 +1,4 @@
 export interface Table {
-  tableName: string;
-  tableEntries: string[];
+  name: string;
+  entries: string[];
 }
