@@ -1,4 +1,4 @@
-import { useContext, useMemo } from "react";
+// import { useContext, useMemo } from "react";
 import { Table } from '../types/Table';
 
 export interface TableProps {

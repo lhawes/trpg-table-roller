@@ -2,14 +2,14 @@ import { AnyAction } from "../../types/anyAction";
 import { Table } from "../../types/Table";
 import { GeneratorActionTypes } from "./generatorActionTypes";
 
-export const addTable = (table: Table):AnyAction => {
+export const addTableAction = (table: Table):AnyAction => {
   return {
     type: GeneratorActionTypes.ADD_TABLE,
     payload: table,
   }
 }
 
-export const removeTable = (tableIndex: number): AnyAction => {
+export const removeTableAction = (tableIndex: number): AnyAction => {
   return {
     type: GeneratorActionTypes.REMOVE_TABLE,
     payload: {
@@ -18,7 +18,7 @@ export const removeTable = (tableIndex: number): AnyAction => {
   }
 }
 
-export const addTableEntry = (tableEntry: string, tableIndex: number): AnyAction => {
+export const addTableEntryAction = (tableEntry: string, tableIndex: number): AnyAction => {
   return {
     type: GeneratorActionTypes.ADD_TABLE_ENTRY,
     payload: {
@@ -28,7 +28,7 @@ export const addTableEntry = (tableEntry: string, tableIndex: number): AnyAction
   }
 }
 
-export const removeTableEntry = (tableIndex: number, tableEntryIndex: number): AnyAction => {
+export const removeTableEntryAction = (tableIndex: number, tableEntryIndex: number): AnyAction => {
   return {
     type: GeneratorActionTypes.REMOVE_TABLE_ENTRY,
     payload: {
@@ -38,7 +38,7 @@ export const removeTableEntry = (tableIndex: number, tableEntryIndex: number): A
   }
 }
 
-export const changeTableEntry = (tableEntry: string, tableIndex: number, tableEntryIndex: number): AnyAction => {
+export const changeTableEntryAction = (tableEntry: string, tableIndex: number, tableEntryIndex: number): AnyAction => {
   return {
     type: GeneratorActionTypes.CHANGE_TABLE_ENTRY,
     payload: {
@@ -48,3 +48,32 @@ export const changeTableEntry = (tableEntry: string, tableIndex: number, tableEn
     }
   }
 }
+
+export const changeGeneratorNameAction = (generatorName: string): AnyAction => {
+  return {
+    type: GeneratorActionTypes.CHANGE_GENERATOR_NAME,
+    payload: {
+      generatorName
+    }
+  }
+}
+
+export const changeTextTemplateAction = (textTemplate: string): AnyAction => {
+  return {
+    type: GeneratorActionTypes.CHANGE_TEXT_TEMPLATE,
+    payload: {
+      textTemplate
+    }
+  }
+}
+
+export const changeTableNameAction = (tableName: string, tableIndex: number): AnyAction => {
+  return {
+    type: GeneratorActionTypes.CHANGE_TABLE_NAME,
+    payload: {
+      tableName,
+      tableIndex
+    }
+  }
+}
+
