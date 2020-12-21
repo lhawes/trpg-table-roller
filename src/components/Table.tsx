@@ -1,4 +1,6 @@
 import React from 'react'
+/** @jsx jsx */
+import { jsx, css } from '@emotion/react/macro'
 
 import { Table } from '../types/Table';
 
@@ -7,9 +9,9 @@ export interface TableProps {
   tableIndex: number;
 }
 
-// const tableStyles = css({
-//   border: '1px dashed black'
-// })
+const tableStyles = css({
+  border: '1px dashed black'
+})
 
 export const TableComponent: React.FC<TableProps>= ({ table, tableIndex }) => {
   // const dispatch = useContext(DispatchContext);
@@ -21,7 +23,7 @@ export const TableComponent: React.FC<TableProps>= ({ table, tableIndex }) => {
   const tableEntries = table.entries;
 
   return (
-    <div>
+    <div css={tableStyles}>
         <p>{tableName}</p>
         { tableEntries.map((entry:string, i: number) => {
           return (<span key={i}>{entry}</span>);
