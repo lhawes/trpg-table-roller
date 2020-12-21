@@ -9,6 +9,9 @@ export const generatorInitialState: RPGGenerator = {
   tables: [{
     name: 'table',
     entries: ['one', 'two']
+  },{
+      name: 'second table',
+      entries: ['apple', 'pie']
   }],
   operations: [],
 }

@@ -28,7 +28,7 @@ const App = () => {
           </header>
           {generatorName }
           <TableList />
-          <div>random roll: { randomRoll[0] }</div>
+          <div>random roll: { randomRoll.map((choice:string)=> <span>{choice}</span>) }</div>
         </div>
       </StateContext.Provider>
     </DispatchContext.Provider>
