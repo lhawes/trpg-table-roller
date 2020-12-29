@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import './App.css';
 import { TableList } from './components/TableList';
-import { getGeneratorName, getGeneratorTables } from './state/generator/generatorSelectors';
+import { getGeneratorName } from './state/generator/generatorSelectors';
 import { rollGenerator } from './state/generator/rollSelectors';
 import { rootInitialState } from './state/rootInitialState';
 import { rootReducer } from './state/rootReducer';

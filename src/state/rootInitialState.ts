@@ -1,7 +1,7 @@
-import { generatorInitialState } from "./generator/generatorReducer";
+import { generatorInitialState, generatorStateKey } from "./generator/generatorReducer";
 
 export const rootInitialState: Record<string, any> = {
-  generator: generatorInitialState,
+  [generatorStateKey]: generatorInitialState,
 }
 
 export type AppState = typeof rootInitialState;

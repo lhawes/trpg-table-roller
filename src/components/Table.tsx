@@ -1,8 +1,10 @@
-import React from 'react'
 /** @jsx jsx */
-import { jsx, css } from '@emotion/react'
-
+import { jsx, css } from '@emotion/react';
+import { ChangeEvent, useCallback, useContext } from 'react';
+import { DispatchContext } from '../App';
+import { changeTableEntryAction } from '../state/generator/generatorActions';
 import { Table } from '../types/Table';
+import { TableEntry } from './TableEntry';
 
 export interface TableProps {
   table: Table;
@@ -28,7 +30,7 @@ const evenTableEntryStyle = css({
 })
 
 export const TableComponent: React.FC<TableProps>= ({ table, tableIndex }) => {
-  // const dispatch = useContext(DispatchContext);
+  const dispatch = useContext(DispatchContext);
   // const state: AppState = useContext(StateContext);
   // const tableName = useMemo(() => selector(state), [state[tableStateKey]]);
   // const tableEntries = useMemo(() => selector(state), [state[tableStateKey]]);
@@ -36,13 +38,18 @@ export const TableComponent: React.FC<TableProps>= ({ table, tableIndex }) => {
   const tableName = table.name;
   const tableEntries = table.entries;
 
+  const updateTableEntry = useCallback((TableEntryIndex: number) => (event: ChangeEvent<HTMLInputElement>) => {
+    const tableEntryValue = event.target.value;
+    return dispatch(changeTableEntryAction(tableEntryValue, tableIndex, TableEntryIndex));
+  }, [dispatch]);
+
   return (
     <div css={tableStyles}>
       <span css={tableNameStyle}>{tableName}</span>
       <div css={tableEntryContainerStyle}>
-        { tableEntries.map((entry:string, i: number) => {
+        { tableEntries.map((entry: string, i: number) => {
           const style = i % 2 === 0 ? evenTableEntryStyle : oddTableEntryStyle;
-          return (<span css={style} key={i}>{entry}</span>);
+          return (<TableEntry value={entry} style={style} onChange={updateTableEntry(i)}/>);
         })}
       </div>
     </div>
