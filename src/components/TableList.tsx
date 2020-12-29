@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from "react";
+import React, { useContext } from "react";
 import { StateContext } from "../App";
 import { getGeneratorTables } from "../state/generator/generatorSelectors";
 import { AppState } from "../state/rootInitialState";
@@ -6,7 +6,7 @@ import { Table } from '../types/Table';
 import { TableComponent } from "./Table";
 
 
-export const TableList: React.FC = ({ }) => {
+export const TableList: React.FC = () => {
   // const dispatch = useContext(DispatchContext);
   const state: AppState = useContext(StateContext);
   // const tableName = useMemo(() => selector(state), [state[tableStateKey]]);
