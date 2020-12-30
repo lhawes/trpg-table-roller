@@ -23,22 +23,14 @@ export const getRandomEntries = (state: AppState): string[] => {
 export const getResult = (state: AppState): string => {
   const entries = getRandomEntries(state);
   const template = getGeneratorTextTemplate(state);
+
   return entries.reduce((result, value, index) => {
-    console.log({
-      result, value, index
-    })
     const delimitedText = templateDelimiter(index + 1);
     if (result.includes(delimitedText)) {
       const regex = new RegExp(`${regexDelimiter(index + 1)}`, 'g');
       const result2 = result.replace(regex, value);
-          console.log('success', {
-            regex,
-            delimitedText,
-            result2
-          })
       return result2
     }
     return result;
   }, template);
-
 };

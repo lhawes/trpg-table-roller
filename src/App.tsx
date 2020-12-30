@@ -31,7 +31,7 @@ const App = () => {
           <header className="App-header">
             TRPG table roller
           </header>
-          {generatorName }
+          {generatorName }<br/>
           <TableEntry value={textTemplate} style={{}} onChange={changeTextTemplate} />
           <TableList />
           <div>

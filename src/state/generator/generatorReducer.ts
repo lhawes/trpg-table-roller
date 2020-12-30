@@ -6,7 +6,7 @@ export const generatorStateKey: string = 'generator';
 
 export const generatorInitialState: RPGGenerator = {
   generatorName: 'generatopr',
-  textTemplate: '',
+  textTemplate: 'a {{1}} b {{2}}',
   tables: [{
     name: 'table',
     entries: ['one', 'two']

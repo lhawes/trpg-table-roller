@@ -59,7 +59,7 @@ export const TableComponent: React.FC<TableProps>= ({ table, tableIndex }) => {
       <div css={tableEntryContainerStyle}>
         { tableEntries.map((entry: string, i: number) => {
           const style = i % 2 === 0 ? evenTableEntryStyle : oddTableEntryStyle;
-          return (<div>
+          return (<div key={i}>
             <TableEntry value={entry} style={style} onChange={updateTableEntry(i)}/>
             <button onClick={removeTableEntry(i)}>X</button>
           </div>);
