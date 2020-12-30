@@ -1,6 +1,7 @@
+import { RPGGenerator } from "../types/Generator";
 import { generatorInitialState, generatorStateKey } from "./generator/generatorReducer";
 
-export const rootInitialState: Record<string, any> = {
+export const rootInitialState: Record<string, RPGGenerator> = {
   [generatorStateKey]: generatorInitialState,
 }
 

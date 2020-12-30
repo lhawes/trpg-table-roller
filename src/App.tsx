@@ -1,8 +1,10 @@
-import React, { useReducer } from 'react';
+import React, { ChangeEvent, useCallback, useReducer } from 'react';
 import './App.css';
+import { TableEntry } from './components/TableEntry';
 import { TableList } from './components/TableList';
-import { getGeneratorName } from './state/generator/generatorSelectors';
-import { rollGenerator } from './state/generator/rollSelectors';
+import { changeTextTemplateAction } from './state/generator/generatorActions';
+import { getGeneratorName, getGeneratorTextTemplate } from './state/generator/generatorSelectors';
+import { getRandomEntries, getResult } from './state/generator/rollSelectors';
 import { rootInitialState } from './state/rootInitialState';
 import { rootReducer } from './state/rootReducer';
 import { defaultDispatch } from './utils/defaultDispatch';
@@ -13,7 +15,14 @@ export const DispatchContext = React.createContext(defaultDispatch);
 const App = () => {
   const [state, dispatch] = useReducer(rootReducer, rootInitialState);
   const generatorName = getGeneratorName(state);
-  const randomRoll = rollGenerator(state);
+  const randomRoll = getRandomEntries(state);
+  const result = getResult(state);
+  const textTemplate = getGeneratorTextTemplate(state);
+
+  const changeTextTemplate = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    dispatch(changeTextTemplateAction(value));
+  }, []);
 
   return (
     <DispatchContext.Provider value={dispatch}>
@@ -23,8 +32,11 @@ const App = () => {
             TRPG table roller
           </header>
           {generatorName }
+          <TableEntry value={textTemplate} style={{}} onChange={changeTextTemplate} />
           <TableList />
-          <div>random roll: { randomRoll.map((choice:string, i: number)=> <span key={`randomroll${i}`}>{choice}</span>) }</div>
+          <div>
+            <button>random roll</button>: { randomRoll.map((choice:string, i: number)=> <span key={`randomroll${i}`}>{choice}</span>) }</div>
+            getResultValue = {result}
         </div>
       </StateContext.Provider>
     </DispatchContext.Provider>
