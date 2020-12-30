@@ -4,7 +4,7 @@ import { TableEntry } from './components/TableEntry';
 import { TableList } from './components/TableList';
 import { changeTextTemplateAction, updateStateFromFileAction } from './state/generator/generatorActions';
 import { getGeneratorName, getGeneratorTextTemplate } from './state/generator/generatorSelectors';
-import { getRandomEntries, getResult } from './state/generator/rollSelectors';
+import { getResult } from './state/generator/rollSelectors';
 import { rootInitialState } from './state/rootInitialState';
 import { rootReducer } from './state/rootReducer';
 import { defaultDispatch } from './utils/defaultDispatch';
@@ -17,7 +17,6 @@ export const DispatchContext = React.createContext(defaultDispatch);
 const App = () => {
   const [state, dispatch] = useReducer(rootReducer, rootInitialState);
   const generatorName = getGeneratorName(state);
-  const randomRoll = getRandomEntries(state);
   const result = getResult(state);
   const textTemplate = getGeneratorTextTemplate(state);
 
@@ -42,11 +41,9 @@ const App = () => {
           </header>
           {generatorName }<br/>
           <TableEntry value={textTemplate} style={{}} onChange={changeTextTemplate} />
-          <TableList />
-          <div>
-            <button>random roll</button>: { randomRoll.map((choice:string, i: number)=> <span key={`randomroll${i}`}>{choice}</span>) }</div>
-            getResultValue = {result}
-          <button onClick={exportData}>Export Tables</button>
+          <TableList /><br />
+          getResultValue = {result}<br />
+          <button onClick={exportData}>Export Table</button><br />
           <input id={uploadInputId} type="file" onChange={getFileHandler}></input>
         </div>
       </StateContext.Provider>
