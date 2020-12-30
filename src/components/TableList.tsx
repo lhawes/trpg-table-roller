@@ -6,7 +6,7 @@ import { getGeneratorTables } from "../state/generator/generatorSelectors";
 import { AppState } from "../state/rootInitialState";
 import { Table } from '../types/Table';
 import { emptyTable } from "../utils/emptyTable";
-import { TableComponent } from "./Table";
+import { TableComponentLayout } from "./layouts/TableLayout";
 
 export const TableList: React.FC = () => {
   const dispatch = useContext(DispatchContext);
@@ -18,7 +18,7 @@ export const TableList: React.FC = () => {
   return (
     <>
       {tables.map((tableEntry: Table, i: number) =>
-        <TableComponent table={tableEntry} tableIndex={i} key={`table${i}`}/>
+        <TableComponentLayout table={tableEntry} tableIndex={i} key={`table${i}`}/>
       )}
       <button onClick={addTable}>Add Table</button>
     </>

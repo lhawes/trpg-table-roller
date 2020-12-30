@@ -1,37 +1,19 @@
-/** @jsx jsx */
-import { jsx, css } from '@emotion/react';
+import React from 'react'
 import { ChangeEvent, useCallback, useContext } from 'react';
 import { DispatchContext } from '../App';
 import { addTableEntryAction, changeTableEntryAction, removeTableEntryAction } from '../state/generator/generatorActions';
 import { Table } from '../types/Table';
-import { UserInput } from './shared/UserInput';
+import { TableStaterenderProps } from './layouts/TableLayout';
 
 export interface TableProps {
   table: Table;
   tableIndex: number;
+  render: any;
 }
-
-const tableStyles = css({
-  border: '1px dashed black'
-});
-const tableNameStyle = css({
-  display: 'block',
-})
-const tableEntryContainerStyle = css({
-  display: 'block'
-})
-const oddTableEntryStyle = css({
-  display: 'block',
-  color: 'red'
-})
-const evenTableEntryStyle = css({
-  display: 'block',
-  color: 'blue'
-});
 
 const defaultTableEntry = 'default entry';
 
-export const TableComponent: React.FC<TableProps>= ({ table, tableIndex }) => {
+export const TableComponent: React.FC<TableProps>= ({ table, tableIndex, render }) => {
   const dispatch = useContext(DispatchContext);
 
   const tableName = table.name;
@@ -50,19 +32,16 @@ export const TableComponent: React.FC<TableProps>= ({ table, tableIndex }) => {
     return dispatch(addTableEntryAction(defaultTableEntry, tableIndex));
   }, [tableIndex, dispatch]);
 
-  return (
-    <div css={tableStyles}>
-      <span css={tableNameStyle}>{tableName}</span>
-      <div css={tableEntryContainerStyle}>
-        { tableEntries.map((entry: string, i: number) => {
-          const style = i % 2 === 0 ? evenTableEntryStyle : oddTableEntryStyle;
-          return (<div key={i}>
-            <UserInput value={entry} style={style} onChange={updateTableEntry(i)}/>
-            <button onClick={removeTableEntry(i)}>X</button>
-          </div>);
-        })}
-      </div>
-      <button onClick={addTableEntry}>Add Table Entry</button>
-    </div>
-  );
+  const tableState: TableStaterenderProps = {
+    tableName,
+    tableEntries: tableEntries.map((entry: string, i: number) => ({
+      value: entry,
+      changeEntry: updateTableEntry(i),
+      entryIndex: i,
+      removeEntry: removeTableEntry(i),
+    })),
+    addTableEntry
+  }
+
+  return render(tableState)
 }

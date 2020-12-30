@@ -7,9 +7,10 @@ import { GeneratorName } from '../GeneratorName';
 import { HistoryList } from '../HistoryList';
 import { RollOnTableButton } from '../RollOnTableButton';
 import { BodyContainer } from '../shared/BodyContainer';
-import { Section } from "../shared/Section";
-import { TableList } from '../TableList';
+import { Section } from '../shared/Section';
+import { TableListLayout } from './TableListLayout';
 import { TextTemplate } from '../TextTemplate';
+import { inputHeight } from '../../constants/styleConstants';
 
 const GeneratorNameLayout = css({
   gridColumn: 1,
@@ -20,7 +21,7 @@ const TextTemplateLayout = css({
   gridColumnEnd: 5,
   gridRow: 1,
 });
-const TableListLayout = css({
+const TableListSectionLayout = css({
   gridColumn: 1,
   gridRowStart: 2,
   gridRowEnd: 5,
@@ -48,8 +49,6 @@ const ClearHistoryLayout = css({
   gridRow: 4,
 });
 
-const inputHeight = '24px';
-
 const gridLayout = css({
   gridTemplateColumns: `3fr 1fr 1fr 1fr `,
   gridTemplateRows: `auto ${inputHeight} 1fr ${inputHeight}`,
@@ -61,7 +60,7 @@ export const BasePageLayout: React.FC = () => {
       <Section layout={gridLayout}>
         <div css={GeneratorNameLayout}><GeneratorName /></div>
         <div css={TextTemplateLayout}><TextTemplate /></div>
-        <div css={TableListLayout}><TableList /></div>
+        <div css={TableListSectionLayout}><TableListLayout /></div>
         <div css={RollOnTableButtonLayout}><RollOnTableButton /></div>
         <div css={HistoryListLayout}><HistoryList /></div>
         <div css={ExportDataButtonLayout}><ExportDataButton /></div>
