@@ -8,7 +8,7 @@ export interface TableEntryProps {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const TableEntry: React.FC<TableEntryProps> = ({ value = '', style, onChange }) => {
+export const UserInput: React.FC<TableEntryProps> = ({ value = '', style, onChange }) => {
   return (
     <input value={value} css={style} onChange={onChange} />
   );

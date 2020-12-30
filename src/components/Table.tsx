@@ -4,7 +4,7 @@ import { ChangeEvent, useCallback, useContext } from 'react';
 import { DispatchContext } from '../App';
 import { addTableEntryAction, changeTableEntryAction, removeTableEntryAction } from '../state/generator/generatorActions';
 import { Table } from '../types/Table';
-import { TableEntry } from './TableEntry';
+import { UserInput } from './UserInput';
 
 export interface TableProps {
   table: Table;
@@ -60,7 +60,7 @@ export const TableComponent: React.FC<TableProps>= ({ table, tableIndex }) => {
         { tableEntries.map((entry: string, i: number) => {
           const style = i % 2 === 0 ? evenTableEntryStyle : oddTableEntryStyle;
           return (<div key={i}>
-            <TableEntry value={entry} style={style} onChange={updateTableEntry(i)}/>
+            <UserInput value={entry} style={style} onChange={updateTableEntry(i)}/>
             <button onClick={removeTableEntry(i)}>X</button>
           </div>);
         })}

@@ -4,7 +4,7 @@ import { changeTextTemplateAction } from "../state/generator/generatorActions";
 import { getGeneratorTextTemplate } from "../state/generator/generatorSelectors";
 import { getResult } from "../state/generator/rollSelectors";
 import { AppState } from "../state/rootInitialState";
-import { TableEntry } from "./TableEntry";
+import { UserInput } from "./UserInput";
 
 export const TextTemplate: React.FC = () => {
   const state: AppState = useContext(StateContext);
@@ -20,7 +20,7 @@ export const TextTemplate: React.FC = () => {
 
   return (
     <div>
-      <TableEntry value={textTemplate} style={{}} onChange={changeTextTemplate} /> : { preview }
+      <UserInput value={textTemplate} style={{}} onChange={changeTextTemplate} /> : { preview }
     </div>
   );
 }

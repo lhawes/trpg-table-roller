@@ -4,7 +4,7 @@ import { StateContext } from "../App";
 import { changeGeneratorNameAction } from "../state/generator/generatorActions";
 import { getGeneratorName } from "../state/generator/generatorSelectors";
 import { AppState } from "../state/rootInitialState";
-import { TableEntry } from "./TableEntry";
+import { UserInput } from "./UserInput";
 
 export const GeneratorName: React.FC = () => {
   const state: AppState = useContext(StateContext);
@@ -17,6 +17,6 @@ export const GeneratorName: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <TableEntry value={generatorName} style={{}} onChange={changeGeneratorNameTemplate} />
+    <UserInput value={generatorName} style={{}} onChange={changeGeneratorNameTemplate} />
   )
 }
