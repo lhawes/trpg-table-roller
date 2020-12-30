@@ -85,3 +85,18 @@ export const updateStateFromFileAction = (fileState: any) => {
     }
   }
 }
+
+export const addToHistory = (tableRollResult: string) => {
+  return {
+    type: GeneratorActionTypes.ADD_TO_HISTORY,
+    payload: {
+      tableRollResult
+    }
+  }
+}
+
+export const clearHistory = () => {
+  return {
+    type: GeneratorActionTypes.CLEAR_HISTORY,
+  }
+}

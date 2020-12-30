@@ -5,6 +5,7 @@ export interface RPGGenerator {
   textTemplate: string,
   tables: Table[],
   operations: TableOperation[],
+  history: string[],
 }
 
 export interface TableOperation {

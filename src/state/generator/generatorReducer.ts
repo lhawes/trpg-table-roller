@@ -16,6 +16,7 @@ export const generatorInitialState: RPGGenerator = {
       entries: ['apple', 'pie']
   }],
   operations: [],
+  history: [],
 }
 
 export const generatorReducer = (state: RPGGenerator = generatorInitialState, action: AnyAction) => {
@@ -84,6 +85,15 @@ export const generatorReducer = (state: RPGGenerator = generatorInitialState, ac
         tableEntryIndex,
       } = action.payload;
       newState.tables[tableIndex].entries[tableEntryIndex] = tableEntry;
+      return newState;
+    }
+    case GeneratorActionTypes.ADD_TO_HISTORY: {
+      const { tableRollResult } = action.payload;
+      newState.history.push(tableRollResult);
+      return newState;
+    }
+    case GeneratorActionTypes.CLEAR_HISTORY: {
+      newState.history = [];
       return newState;
     }
     default:

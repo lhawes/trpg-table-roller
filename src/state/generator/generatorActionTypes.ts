@@ -10,4 +10,6 @@ export enum GeneratorActionTypes {
   CHANGE_TABLE_ENTRY = '@table/CHANGE_TABLE_ENTRY',
 
   UPDATE_STATE_FROM_FILE = '@app/UPDATE_STATE_FROM_FILE',
+  ADD_TO_HISTORY = '@history/ADD_TO_HISTORY',
+  CLEAR_HISTORY = '@history/CLEAR_HISTORY',
 }
