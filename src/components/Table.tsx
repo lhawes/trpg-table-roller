@@ -4,7 +4,7 @@ import { ChangeEvent, useCallback, useContext } from 'react';
 import { DispatchContext } from '../App';
 import { addTableEntryAction, changeTableEntryAction, removeTableEntryAction } from '../state/generator/generatorActions';
 import { Table } from '../types/Table';
-import { UserInput } from './UserInput';
+import { UserInput } from './shared/UserInput';
 
 export interface TableProps {
   table: Table;
@@ -33,9 +33,6 @@ const defaultTableEntry = 'default entry';
 
 export const TableComponent: React.FC<TableProps>= ({ table, tableIndex }) => {
   const dispatch = useContext(DispatchContext);
-  // const state: AppState = useContext(StateContext);
-  // const tableName = useMemo(() => selector(state), [state[tableStateKey]]);
-  // const tableEntries = useMemo(() => selector(state), [state[tableStateKey]]);
 
   const tableName = table.name;
   const tableEntries = table.entries;

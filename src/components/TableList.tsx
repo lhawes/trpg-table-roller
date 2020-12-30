@@ -11,8 +11,6 @@ import { TableComponent } from "./Table";
 export const TableList: React.FC = () => {
   const dispatch = useContext(DispatchContext);
   const state: AppState = useContext(StateContext);
-  // const tableName = useMemo(() => selector(state), [state[tableStateKey]]);
-  // const tableEntries = useMemo(() => selector(state), [state[tableStateKey]]);
 
   const tables = getGeneratorTables(state) || [];
   const addTable = useCallback(() => dispatch(addTableAction(emptyTable())), [])

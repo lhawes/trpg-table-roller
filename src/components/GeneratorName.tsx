@@ -4,7 +4,7 @@ import { StateContext } from "../App";
 import { changeGeneratorNameAction } from "../state/generator/generatorActions";
 import { getGeneratorName } from "../state/generator/generatorSelectors";
 import { AppState } from "../state/rootInitialState";
-import { UserInput } from "./UserInput";
+import { UserInput } from "./shared/UserInput";
 
 export const GeneratorName: React.FC = () => {
   const state: AppState = useContext(StateContext);

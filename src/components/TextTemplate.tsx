@@ -4,7 +4,7 @@ import { changeTextTemplateAction } from "../state/generator/generatorActions";
 import { getGeneratorTextTemplate } from "../state/generator/generatorSelectors";
 import { getResult } from "../state/generator/rollSelectors";
 import { AppState } from "../state/rootInitialState";
-import { UserInput } from "./UserInput";
+import { UserInput } from "./shared/UserInput";
 
 export const TextTemplate: React.FC = () => {
   const state: AppState = useContext(StateContext);
