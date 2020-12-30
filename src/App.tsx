@@ -1,18 +1,19 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react';
-import React, { ChangeEvent, useCallback, useReducer } from 'react';
+import React, { useReducer } from 'react';
 import './App.css';
+import { ClearHistory } from './components/ClearHistory';
+import { ExportDataButton } from './components/ExportDataButton';
+import { FileUploadInput } from './components/FileUploadInput';
+import { GeneratorName } from './components/GeneratorName';
+import { Header } from './components/Header';
 import { HistoryList } from './components/HistoryList';
-import { TableEntry } from './components/TableEntry';
+import { RollOnTableButton } from './components/RollOnTableButton';
 import { TableList } from './components/TableList';
-import { addToHistory, changeGeneratorNameAction, changeTextTemplateAction, clearHistory, updateStateFromFileAction } from './state/generator/generatorActions';
-import { getGeneratorName, getGeneratorTextTemplate } from './state/generator/generatorSelectors';
-import { getResult } from './state/generator/rollSelectors';
+import { TextTemplate } from './components/TextTemplate';
 import { rootInitialState } from './state/rootInitialState';
 import { rootReducer } from './state/rootReducer';
 import { defaultDispatch } from './utils/defaultDispatch';
-import { saveFile, transformStateForFile } from './utils/saveFile';
-import { getFile, uploadInputId } from './utils/uploadFile';
 
 export const StateContext = React.createContext(rootInitialState);
 export const DispatchContext = React.createContext(defaultDispatch);
@@ -23,46 +24,20 @@ const appStyles = css({
 
 const App = () => {
   const [state, dispatch] = useReducer(rootReducer, rootInitialState);
-  const generatorName = getGeneratorName(state);
-  const textTemplate = getGeneratorTextTemplate(state);
-  const preview = getResult(state);
-
-  const changeTextTemplate = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    dispatch(changeTextTemplateAction(value));
-  }, []);
-
-  const changeGeneratorNameTemplate = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    dispatch(changeGeneratorNameAction(value));
-  }, []);
-
-  const exportData = useCallback(() => {
-    saveFile(transformStateForFile(state), `${generatorName}-tables`);
-  }, [state]);
-
-  const updateStateFromFile = useCallback((content) => dispatch(updateStateFromFileAction(content)),[]);
-  const getFileHandler = useCallback(getFile(updateStateFromFile), [updateStateFromFile]);
-
-  const pushRollToHistory = useCallback(() => dispatch(addToHistory(getResult(state))), [state]);
-  const clearRollToHistory = useCallback(() => dispatch(clearHistory()), [state]);
 
   return (
     <DispatchContext.Provider value={dispatch}>
       <StateContext.Provider value={state}>
         <div id="App" css={appStyles}>
-          <header className="App-header">
-            TRPG table roller
-          </header>
-          <TableEntry value={generatorName} style={{}} onChange={changeGeneratorNameTemplate} /><br />
-          <TableEntry value={textTemplate} style={{}} onChange={changeTextTemplate} /> : {preview}
+          <Header />
+          <GeneratorName />
+          <TextTemplate />
           <TableList /><br />
-          <button onClick={pushRollToHistory}>Roll on Table</button><br />
-          <button onClick={exportData}>Export Table</button><br />
-          <input id={uploadInputId} type="file" onChange={getFileHandler}></input><br />
-          Table Roll Results:<br />
+          <RollOnTableButton /><br />
+          <ExportDataButton /><br />
+          <FileUploadInput /><br />
           <HistoryList />
-          <button onClick={clearRollToHistory}>Clear Roll History</button>
+          <ClearHistory />
         </div>
       </StateContext.Provider>
     </DispatchContext.Provider>

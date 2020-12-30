@@ -14,6 +14,7 @@ export const HistoryList: React.FC = () => {
   const historyEntries = getGeneratorHistory(state);
   return (
     <div>
+      Table Roll Results:<br />
       { historyEntries
         .map((rollEntry: string, i: number) => (<span css={historyEntryStyles} key={i}>{ rollEntry }</span>))
         .reverse()
