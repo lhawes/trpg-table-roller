@@ -1,18 +1,26 @@
 /** @jsx jsx */
-import { jsx, css } from "@emotion/react";
+import { jsx, css, SerializedStyles } from "@emotion/react";
+import { useMemo } from "react";
 import { Header } from "../Header";
 
-const bodyContainerCss = css`
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-`
+const bodyContainerCss = css({
+  maxWidth: '1200px',
+  margin: '0 auto',
+  display: 'flex',
+  flexDirection: 'column',
+});
 
-export const BodyContainer: React.FC = ({ children }) => {
+export interface BodyContainerProps {
+  style?: SerializedStyles
+}
+
+export const BodyContainer: React.FC<BodyContainerProps> = ({ children, style }) => {
+  const computedCss = useMemo(() => {
+    return css(bodyContainerCss, style)
+  }, [style]);
+
   return (
-    <div id="App" css={bodyContainerCss}>
-      <Header />
+    <div css={computedCss}>
       { children }
     </div>
   );

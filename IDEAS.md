@@ -13,8 +13,6 @@ Feature: Host the app somewhere
 Feature: Add weights for table entries
 
 
-
-
 Styles:
 1st edition with paper texture
 https://www.enworld.org/attachments/weapons_list-png.61091/

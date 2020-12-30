@@ -28,9 +28,22 @@ export const getResult = (state: AppState): string => {
     const delimitedText = templateDelimiter(index + 1);
     if (result.includes(delimitedText)) {
       const regex = new RegExp(`${regexDelimiter(index + 1)}`, 'g');
-      const result2 = result.replace(regex, value);
-      return result2
+      return result.replace(regex, value);
     }
     return result;
   }, template);
 };
+
+export const getTextTemplatePreview = (state: AppState): string => {
+  const tables = getGeneratorTables(state);
+  const template = getGeneratorTextTemplate(state);
+
+  return tables.reduce((result, table, index) => {
+    const delimitedText = templateDelimiter(index + 1);
+    if (result.includes(delimitedText)) {
+      const regex = new RegExp(`${regexDelimiter(index + 1)}`, 'g');
+      return result.replace(regex, templateDelimiter(table.name));
+    }
+    return result;
+  }, template);
+}

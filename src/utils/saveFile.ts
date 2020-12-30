@@ -20,5 +20,3 @@ export const transformStateForFile = (state: AppState): string[] => {
   const stateToString = JSON.stringify(state, null, 2);
   return [stateToString];
 }
-
-// saveFile([test], "hello world 2.txt");

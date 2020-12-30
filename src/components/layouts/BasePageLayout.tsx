@@ -9,14 +9,14 @@ import { RollOnTableButton } from '../RollOnTableButton';
 import { BodyContainer } from '../shared/BodyContainer';
 import { Section } from '../shared/Section';
 import { TableListLayout } from './TableListLayout';
-import { TextTemplate } from '../TextTemplate';
 import { inputHeight } from '../../constants/styleConstants';
+import { TextTemplateLayout } from './TextTemplateLayout'
 
 const GeneratorNameLayout = css({
   gridColumn: 1,
   gridRow: 1,
 });
-const TextTemplateLayout = css({
+const TextTemplateLayoutStyles = css({
   gridColumnStart: 2,
   gridColumnEnd: 5,
   gridRow: 1,
@@ -54,12 +54,16 @@ const gridLayout = css({
   gridTemplateRows: `auto ${inputHeight} 1fr ${inputHeight}`,
 });
 
+const generatorNameStyles = css({
+  width: '100%'
+})
+
 export const BasePageLayout: React.FC = () => {
   return (
     <BodyContainer>
       <Section layout={gridLayout}>
-        <div css={GeneratorNameLayout}><GeneratorName /></div>
-        <div css={TextTemplateLayout}><TextTemplate /></div>
+        <div css={GeneratorNameLayout}><GeneratorName style={generatorNameStyles}/></div>
+        <div css={TextTemplateLayoutStyles}><TextTemplateLayout /></div>
         <div css={TableListSectionLayout}><TableListLayout /></div>
         <div css={RollOnTableButtonLayout}><RollOnTableButton /></div>
         <div css={HistoryListLayout}><HistoryList /></div>

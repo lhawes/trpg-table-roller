@@ -1,3 +1,4 @@
+import { SerializedStyles } from "@emotion/react";
 import React, { ChangeEvent, useCallback, useContext } from "react";
 import { DispatchContext } from "../App";
 import { StateContext } from "../App";
@@ -6,7 +7,12 @@ import { getGeneratorName } from "../state/generator/generatorSelectors";
 import { AppState } from "../state/rootInitialState";
 import { UserInput } from "./shared/UserInput";
 
-export const GeneratorName: React.FC = () => {
+export interface GeneratorNameProps {
+  style?: SerializedStyles
+}
+export const GeneratorName: React.FC<GeneratorNameProps> = ({
+  style = {}
+}) => {
   const state: AppState = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
 
@@ -17,6 +23,6 @@ export const GeneratorName: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <UserInput value={generatorName} style={{}} onChange={changeGeneratorNameTemplate} />
+    <UserInput value={generatorName} style={style} onChange={changeGeneratorNameTemplate} />
   )
 }

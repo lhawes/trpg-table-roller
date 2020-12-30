@@ -1,9 +1,24 @@
-import React from 'react'
+/** @jsx jsx */
+import { jsx, css } from '@emotion/react'
+import { BodyContainer } from './shared/BodyContainer';
+
+const headerContainerStyle = css({
+  backgroundColor: 'black'
+})
+
+const headerStyle = css({
+  backgroundColor: 'black',
+  color: 'white'
+})
 
 export const Header: React.FC = () => {
   return (
-    <header className="App-header">
-      TRPG table roller
-    </header>
+    <div css={headerContainerStyle}>
+    <BodyContainer>
+      <header css={headerStyle}>
+        TRPG table roller
+      </header>
+    </BodyContainer>
+    </div>
   );
 }
