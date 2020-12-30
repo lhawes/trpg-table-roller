@@ -16,6 +16,7 @@ export interface TableEntryProps {
 
 export interface TableStaterenderProps {
   tableName: string,
+  updateTableName: (event: ChangeEvent<HTMLInputElement>) => void,
   tableEntries: TableEntryProps[]
   addTableEntry: () => void
 }
@@ -46,11 +47,12 @@ export const TableComponentLayout: React.FC<TableComponentLayoutProps> = ({ tabl
   return (
     <TableComponent table={table} tableIndex={tableIndex} render={({
       tableName,
+      updateTableName,
       tableEntries,
       addTableEntry
     }: TableStaterenderProps) => (
         <SubLayout layout={IndividualTableGrid}>
-          <div css={tableNameLayout}>{tableName}</div>
+          <UserInput value={tableName} style={tableNameLayout} onChange={updateTableName} />
           { tableEntries.map(({ value, changeEntry, entryIndex, removeEntry }: TableEntryProps) => {
             return [
               <UserInput value={value} style={{}} onChange={changeEntry} key={`table-entry-${entryIndex}`} />,

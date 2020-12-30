@@ -1,7 +1,7 @@
 import React from 'react'
 import { ChangeEvent, useCallback, useContext } from 'react';
 import { DispatchContext } from '../App';
-import { addTableEntryAction, changeTableEntryAction, removeTableEntryAction } from '../state/generator/generatorActions';
+import { addTableEntryAction, changeTableEntryAction, changeTableNameAction, removeTableEntryAction } from '../state/generator/generatorActions';
 import { Table } from '../types/Table';
 import { TableStaterenderProps } from './layouts/TableLayout';
 
@@ -19,6 +19,11 @@ export const TableComponent: React.FC<TableProps>= ({ table, tableIndex, render 
   const tableName = table.name;
   const tableEntries = table.entries;
 
+  const updateTableName = useCallback((event: ChangeEvent<HTMLInputElement>): void => {
+    const tableNameValue = event.target.value;
+    return dispatch(changeTableNameAction(tableNameValue, tableIndex));
+  }, [tableIndex, dispatch]);
+
   const updateTableEntry = useCallback((TableEntryIndex: number) => (event: ChangeEvent<HTMLInputElement>): void => {
     const tableEntryValue = event.target.value;
     return dispatch(changeTableEntryAction(tableEntryValue, tableIndex, TableEntryIndex));
@@ -34,6 +39,7 @@ export const TableComponent: React.FC<TableProps>= ({ table, tableIndex, render 
 
   const tableState: TableStaterenderProps = {
     tableName,
+    updateTableName,
     tableEntries: tableEntries.map((entry: string, i: number) => ({
       value: entry,
       changeEntry: updateTableEntry(i),
