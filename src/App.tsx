@@ -1,9 +1,11 @@
+/** @jsx jsx */
+import { jsx, css } from '@emotion/react';
 import React, { ChangeEvent, useCallback, useReducer } from 'react';
 import './App.css';
 import { HistoryList } from './components/HistoryList';
 import { TableEntry } from './components/TableEntry';
 import { TableList } from './components/TableList';
-import { addToHistory, changeTextTemplateAction, clearHistory, updateStateFromFileAction } from './state/generator/generatorActions';
+import { addToHistory, changeGeneratorNameAction, changeTextTemplateAction, clearHistory, updateStateFromFileAction } from './state/generator/generatorActions';
 import { getGeneratorName, getGeneratorTextTemplate } from './state/generator/generatorSelectors';
 import { getResult } from './state/generator/rollSelectors';
 import { rootInitialState } from './state/rootInitialState';
@@ -15,6 +17,10 @@ import { getFile, uploadInputId } from './utils/uploadFile';
 export const StateContext = React.createContext(rootInitialState);
 export const DispatchContext = React.createContext(defaultDispatch);
 
+const appStyles = css({
+ margin: '30px'
+})
+
 const App = () => {
   const [state, dispatch] = useReducer(rootReducer, rootInitialState);
   const generatorName = getGeneratorName(state);
@@ -24,6 +30,11 @@ const App = () => {
   const changeTextTemplate = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     dispatch(changeTextTemplateAction(value));
+  }, []);
+
+  const changeGeneratorNameTemplate = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    dispatch(changeGeneratorNameAction(value));
   }, []);
 
   const exportData = useCallback(() => {
@@ -39,11 +50,11 @@ const App = () => {
   return (
     <DispatchContext.Provider value={dispatch}>
       <StateContext.Provider value={state}>
-        <div className="App">
+        <div id="App" css={appStyles}>
           <header className="App-header">
             TRPG table roller
           </header>
-          { generatorName }<br/>
+          <TableEntry value={generatorName} style={{}} onChange={changeGeneratorNameTemplate} /><br />
           <TableEntry value={textTemplate} style={{}} onChange={changeTextTemplate} /> : {preview}
           <TableList /><br />
           <button onClick={pushRollToHistory}>Roll on Table</button><br />
