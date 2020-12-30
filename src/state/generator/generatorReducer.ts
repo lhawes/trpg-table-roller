@@ -1,6 +1,7 @@
 import { AnyAction } from "../../types/anyAction";
 import { RPGGenerator } from "../../types/Generator";
 import { GeneratorActionTypes } from "./generatorActionTypes";
+import { getGeneratorSection } from "./generatorSelectors";
 
 export const generatorStateKey: string = 'generator';
 
@@ -24,6 +25,10 @@ export const generatorReducer = (state: RPGGenerator = generatorInitialState, ac
   // catch error
 
   switch (action.type) {
+    case GeneratorActionTypes.UPDATE_STATE_FROM_FILE: {
+      const { fileState } = action.payload;
+      return getGeneratorSection(fileState);
+    }
     case GeneratorActionTypes.CHANGE_TEXT_TEMPLATE: {
       const { textTemplate } = action.payload;
       newState.textTemplate = textTemplate;

@@ -77,3 +77,15 @@ export const changeTableNameAction = (tableName: string, tableIndex: number): An
   }
 }
 
+export const updateStateFromFileAction = (fileState: any) => {
+  console.log({
+    type: typeof fileState,
+    fileState,
+  })
+  return {
+    type: GeneratorActionTypes.UPDATE_STATE_FROM_FILE,
+    payload: {
+      fileState
+    }
+  }
+}
