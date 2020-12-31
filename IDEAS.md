@@ -7,10 +7,11 @@ Feature: Swap between giant text interpreter or table mode
 Feature: Some way to share tables between people
 Style:   Numbers on the side of the table
 Feature: Easy print out the tables that you create
-Fix:     Change text template to use names of tables in preview
 Fix:     Remove all create react app stuff
 Feature: Host the app somewhere
 Feature: Add weights for table entries
+Fix:     Auto focus new table entry
+Fix:     If no text template, spit out each entry
 
 
 Styles:

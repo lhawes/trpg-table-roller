@@ -52,6 +52,7 @@ const ClearHistoryLayout = css({
 const gridLayout = css({
   gridTemplateColumns: `3fr 1fr 1fr 1fr `,
   gridTemplateRows: `auto ${inputHeight} 1fr ${inputHeight}`,
+  columnGap: '10px',
 });
 
 const generatorNameStyles = css({
@@ -61,7 +62,6 @@ const generatorNameStyles = css({
   margin: '20px 0 16px 0',
   '&:hover,&:focus': {
     padding: '0 0 4px 0',
-
   }
 })
 

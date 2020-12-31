@@ -36,15 +36,17 @@ const tableNameLayout = css({
   gridColumnStart: 1,
   gridColumnEnd: 3,
   gridRow: 1,
-});
+  fontSize: '18px',
+  padding: '0 0 3px 0',
+  margin: '18px 0 0 0',
+  '&:hover,&:focus': {
+    padding: '0 0 2px 0',
+  }
+})
 
 const addEntryLayout = css({
   gridColumnStart: 1,
   gridColumnEnd: 3,
-})
-
-const removeButtonHoverStyle = css({
-  // backgroundColor: '#F5F5F5',
 })
 
 const removeButtonStyle = css({
@@ -52,7 +54,7 @@ const removeButtonStyle = css({
   outline: 'none',
   appearance: 'none',
   backgroundColor: 'transparent',
-  '&:hover,&:focus': removeButtonHoverStyle,
+  '&:hover,&:focus': {},
   height: `${inputHeight} + 1px`,
   padding: '0 0 1px 0'
 });

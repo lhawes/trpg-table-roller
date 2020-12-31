@@ -12,7 +12,9 @@ const textTemplateContainer = css({
 
 const textTemplateInput = css({
   width: '100%'
-})
+});
+
+
 
 export const TextTemplateLayout: React.FC = () => {
   const state: AppState = useContext(StateContext)
@@ -20,6 +22,7 @@ export const TextTemplateLayout: React.FC = () => {
 
   return (
     <div css={textTemplateContainer}>
+      <div>Roll result template</div>
       <TextTemplate style={textTemplateInput}/>
       preview: { preview }
     </div>
