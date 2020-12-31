@@ -24,14 +24,20 @@ export const getResult = (state: AppState): string => {
   const entries = getRandomEntries(state);
   const template = getGeneratorTextTemplate(state);
 
-  return entries.reduce((result, value, index) => {
-    const delimitedText = templateDelimiter(index + 1);
-    if (result.includes(delimitedText)) {
-      const regex = new RegExp(`${regexDelimiter(index + 1)}`, 'g');
-      return result.replace(regex, value);
-    }
-    return result;
-  }, template);
+  if (template) {
+    return entries.reduce((result, value, index) => {
+      const delimitedText = templateDelimiter(index + 1);
+      if (result.includes(delimitedText)) {
+        const regex = new RegExp(`${regexDelimiter(index + 1)}`, 'g');
+        return result.replace(regex, value);
+      }
+      return result;
+    }, template);
+  }
+
+  return entries.reduce((result, value) => {
+    return `${result} ${value}`
+  });
 };
 
 export const getTextTemplatePreview = (state: AppState): string => {

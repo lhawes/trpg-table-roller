@@ -11,7 +11,6 @@ Fix:     Remove all create react app stuff
 Feature: Host the app somewhere
 Feature: Add weights for table entries
 Fix:     Auto focus new table entry
-Fix:     If no text template, spit out each entry
 
 
 Styles:
