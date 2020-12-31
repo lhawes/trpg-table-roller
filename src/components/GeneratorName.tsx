@@ -5,7 +5,7 @@ import { StateContext } from "../App";
 import { changeGeneratorNameAction } from "../state/generator/generatorActions";
 import { getGeneratorName } from "../state/generator/generatorSelectors";
 import { AppState } from "../state/rootInitialState";
-import { UserInput } from "./shared/UserInput";
+import { UserInputPrimary } from "./shared/UserInputPrimary";
 
 export interface GeneratorNameProps {
   style?: SerializedStyles
@@ -23,6 +23,6 @@ export const GeneratorName: React.FC<GeneratorNameProps> = ({
   }, [dispatch]);
 
   return (
-    <UserInput value={generatorName} style={style} onChange={changeGeneratorNameTemplate} placeHolder='Generator name'/>
+    <UserInputPrimary value={generatorName} style={style} onChange={changeGeneratorNameTemplate} placeHolder='Generator name'/>
   )
 }

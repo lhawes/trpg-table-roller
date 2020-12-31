@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react'
 import { ChangeEvent } from "react";
-import { inputWidth } from '../../constants/styleConstants';
+import { inputHeight, inputWidth, lightRed } from '../../constants/styleConstants';
 import { Table } from "../../types/Table";
 import { SubLayout } from "../shared/SubLayout";
-import { UserInput } from "../shared/UserInput";
+import { UserInputPrimary } from '../shared/UserInputPrimary';
 import { TableComponent } from "../Table";
 
 export interface TableEntryProps {
@@ -19,6 +19,7 @@ export interface TableStaterenderProps {
   updateTableName: (event: ChangeEvent<HTMLInputElement>) => void,
   tableEntries: TableEntryProps[]
   addTableEntry: () => void
+  handleLastEntryEnterKey: (e: React.KeyboardEvent) => void
 }
 
 export interface TableComponentLayoutProps {
@@ -40,7 +41,24 @@ const tableNameLayout = css({
 const addEntryLayout = css({
   gridColumnStart: 1,
   gridColumnEnd: 3,
+})
 
+const removeButtonHoverStyle = css({
+  // backgroundColor: '#F5F5F5',
+})
+
+const removeButtonStyle = css({
+  border: 'none',
+  outline: 'none',
+  appearance: 'none',
+  backgroundColor: 'transparent',
+  '&:hover,&:focus': removeButtonHoverStyle,
+  height: `${inputHeight} + 1px`,
+  padding: '0 0 1px 0'
+});
+
+const coloredEntryStyle = css({
+  backgroundColor: lightRed,
 })
 
 export const TableComponentLayout: React.FC<TableComponentLayoutProps> = ({ table, tableIndex }) => {
@@ -49,14 +67,20 @@ export const TableComponentLayout: React.FC<TableComponentLayoutProps> = ({ tabl
       tableName,
       updateTableName,
       tableEntries,
-      addTableEntry
+      addTableEntry,
+      handleLastEntryEnterKey
     }: TableStaterenderProps) => (
         <SubLayout layout={IndividualTableGrid}>
-          <UserInput value={tableName} style={tableNameLayout} onChange={updateTableName} placeHolder='Table name'/>
+          <UserInputPrimary value={tableName} style={tableNameLayout} onChange={updateTableName} placeHolder='Table name'/>
           { tableEntries.map(({ value, changeEntry, entryIndex, removeEntry }: TableEntryProps) => {
+            const addStyle = entryIndex % 2 ? coloredEntryStyle : undefined;
+            let onKeyDown
+            if (entryIndex + 1 === tableEntries.length) {
+              onKeyDown = handleLastEntryEnterKey;
+            }
             return [
-              <UserInput value={value} onChange={changeEntry} key={`table-entry-${entryIndex}`} placeHolder='Entry text'/>,
-              <button onClick={removeEntry} key={`close-table-entry-${entryIndex}`}>X</button>
+              <UserInputPrimary tabIndex={entryIndex} onKeyDown={onKeyDown} style={addStyle} value={value} onChange={changeEntry} key={`table-entry-${entryIndex}`} placeHolder='Entry text'/>,
+              <button css={css(removeButtonStyle, addStyle)} onClick={removeEntry} key={`close-table-entry-${entryIndex}`}>X</button>
             ];
           })}
           <button onClick={addTableEntry} css={addEntryLayout}>Add Table Entry</button>

@@ -35,6 +35,13 @@ export const TableComponent: React.FC<TableProps>= ({ table, tableIndex, render 
     return dispatch(addTableEntryAction('', tableIndex));
   }, [tableIndex, dispatch]);
 
+  const handleLastEntryEnterKey = useCallback((e: React.KeyboardEvent) => {
+    console.log(e.key, e)
+    if (e.key === 'Enter') {
+      return dispatch(addTableEntryAction('', tableIndex));
+    }
+  }, [tableIndex, dispatch])
+
   const tableState: TableStaterenderProps = {
     tableName,
     updateTableName,
@@ -44,7 +51,8 @@ export const TableComponent: React.FC<TableProps>= ({ table, tableIndex, render 
       entryIndex: i,
       removeEntry: removeTableEntry(i),
     })),
-    addTableEntry
+    addTableEntry,
+    handleLastEntryEnterKey,
   }
 
   return render(tableState)

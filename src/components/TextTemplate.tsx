@@ -4,7 +4,7 @@ import { StateContext, DispatchContext } from "../App";
 import { changeTextTemplateAction } from "../state/generator/generatorActions";
 import { getGeneratorTextTemplate } from "../state/generator/generatorSelectors";
 import { AppState } from "../state/rootInitialState";
-import { UserInput } from "./shared/UserInput";
+import { UserInputPrimary } from "./shared/UserInputPrimary";
 
 export interface TextTemplateLayoutProps {
   style?: SerializedStyles
@@ -23,5 +23,5 @@ export const TextTemplate: React.FC<TextTemplateLayoutProps> = ({
     dispatch(changeTextTemplateAction(value));
   }, [dispatch]);
 
-  return (<UserInput value={textTemplate} style={style} onChange={changeTextTemplate} placeHolder='Text template {{1}}'/>);
+  return (<UserInputPrimary value={textTemplate} style={style} onChange={changeTextTemplate} placeHolder='Text template {{1}}'/>);
 }

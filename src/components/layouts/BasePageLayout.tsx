@@ -55,7 +55,14 @@ const gridLayout = css({
 });
 
 const generatorNameStyles = css({
-  width: '100%'
+  width: '100%',
+  fontSize: '30px',
+  padding: '0 0 5px 0',
+  margin: '20px 0 16px 0',
+  '&:hover,&:focus': {
+    padding: '0 0 4px 0',
+
+  }
 })
 
 export const BasePageLayout: React.FC = () => {
