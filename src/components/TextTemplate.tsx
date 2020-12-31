@@ -23,5 +23,5 @@ export const TextTemplate: React.FC<TextTemplateLayoutProps> = ({
     dispatch(changeTextTemplateAction(value));
   }, [dispatch]);
 
-  return (<UserInput value={textTemplate} style={style} onChange={changeTextTemplate} />);
+  return (<UserInput value={textTemplate} style={style} onChange={changeTextTemplate} placeHolder='Text template {{1}}'/>);
 }

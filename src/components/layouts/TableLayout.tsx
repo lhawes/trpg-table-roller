@@ -52,10 +52,10 @@ export const TableComponentLayout: React.FC<TableComponentLayoutProps> = ({ tabl
       addTableEntry
     }: TableStaterenderProps) => (
         <SubLayout layout={IndividualTableGrid}>
-          <UserInput value={tableName} style={tableNameLayout} onChange={updateTableName} />
+          <UserInput value={tableName} style={tableNameLayout} onChange={updateTableName} placeHolder='Table name'/>
           { tableEntries.map(({ value, changeEntry, entryIndex, removeEntry }: TableEntryProps) => {
             return [
-              <UserInput value={value} onChange={changeEntry} key={`table-entry-${entryIndex}`} />,
+              <UserInput value={value} onChange={changeEntry} key={`table-entry-${entryIndex}`} placeHolder='Entry text'/>,
               <button onClick={removeEntry} key={`close-table-entry-${entryIndex}`}>X</button>
             ];
           })}

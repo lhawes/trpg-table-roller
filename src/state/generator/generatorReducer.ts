@@ -6,15 +6,9 @@ import { getGeneratorSection } from "./generatorSelectors";
 export const generatorStateKey: string = 'generator';
 
 export const generatorInitialState: RPGGenerator = {
-  generatorName: 'generatopr',
-  textTemplate: 'a {{1}} b {{2}}',
-  tables: [{
-    name: 'table',
-    entries: ['one', 'two']
-  },{
-      name: 'second table',
-      entries: ['apple', 'pie']
-  }],
+  generatorName: '',
+  textTemplate: '',
+  tables: [],
   operations: [],
   history: [],
 }

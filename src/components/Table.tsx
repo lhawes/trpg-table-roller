@@ -11,8 +11,6 @@ export interface TableProps {
   render: any;
 }
 
-const defaultTableEntry = 'default entry';
-
 export const TableComponent: React.FC<TableProps>= ({ table, tableIndex, render }) => {
   const dispatch = useContext(DispatchContext);
 
@@ -34,7 +32,7 @@ export const TableComponent: React.FC<TableProps>= ({ table, tableIndex, render 
   }, [tableIndex, dispatch]);
 
   const addTableEntry = useCallback((): void => {
-    return dispatch(addTableEntryAction(defaultTableEntry, tableIndex));
+    return dispatch(addTableEntryAction('', tableIndex));
   }, [tableIndex, dispatch]);
 
   const tableState: TableStaterenderProps = {
