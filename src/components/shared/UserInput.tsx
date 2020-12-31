@@ -1,10 +1,10 @@
 /** @jsx jsx */
-import { jsx } from '@emotion/react';
+import { jsx, SerializedStyles } from '@emotion/react';
 import { ChangeEvent } from 'react';
 
 export interface TableEntryProps {
   value: string;
-  style: any;
+  style?: SerializedStyles;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 

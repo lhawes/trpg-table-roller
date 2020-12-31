@@ -11,7 +11,7 @@ export interface GeneratorNameProps {
   style?: SerializedStyles
 }
 export const GeneratorName: React.FC<GeneratorNameProps> = ({
-  style = {}
+  style
 }) => {
   const state: AppState = useContext(StateContext);
   const dispatch = useContext(DispatchContext);

@@ -11,7 +11,7 @@ export interface TextTemplateLayoutProps {
 }
 
 export const TextTemplate: React.FC<TextTemplateLayoutProps> = ({
-  style = {}
+  style
 }) => {
   const state: AppState = useContext(StateContext);
   const dispatch = useContext(DispatchContext);

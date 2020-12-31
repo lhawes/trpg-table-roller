@@ -55,7 +55,7 @@ export const TableComponentLayout: React.FC<TableComponentLayoutProps> = ({ tabl
           <UserInput value={tableName} style={tableNameLayout} onChange={updateTableName} />
           { tableEntries.map(({ value, changeEntry, entryIndex, removeEntry }: TableEntryProps) => {
             return [
-              <UserInput value={value} style={{}} onChange={changeEntry} key={`table-entry-${entryIndex}`} />,
+              <UserInput value={value} onChange={changeEntry} key={`table-entry-${entryIndex}`} />,
               <button onClick={removeEntry} key={`close-table-entry-${entryIndex}`}>X</button>
             ];
           })}
