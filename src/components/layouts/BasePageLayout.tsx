@@ -9,7 +9,6 @@ import { RollOnTableButton } from '../RollOnTableButton';
 import { BodyContainer } from '../shared/BodyContainer';
 import { Section } from '../shared/Section';
 import { TableListLayout } from './TableListLayout';
-import { inputHeight } from '../../constants/styleConstants';
 import { TextTemplateLayout } from './TextTemplateLayout'
 
 const GeneratorNameLayout = css({

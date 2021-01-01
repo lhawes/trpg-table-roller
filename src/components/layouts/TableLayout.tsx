@@ -1,7 +1,9 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react'
-import { ChangeEvent } from "react";
+import { ChangeEvent, useCallback, useContext } from "react";
+import { DispatchContext } from '../../App';
 import { inputHeight, inputWidth, redScheme } from '../../constants/styleConstants';
+import { removeTableAction } from '../../state/generator/generatorActions';
 import { Table } from "../../types/Table";
 import { PrimaryButton } from '../shared/PrimaryButton';
 import { SubLayout } from "../shared/SubLayout";
@@ -45,9 +47,13 @@ const tableNameLayout = css({
   }
 })
 
-const addEntryLayout = css({
+const tableButtons = css({
   gridColumnStart: 1,
   gridColumnEnd: 3,
+})
+
+const removeTableButton = css({
+  float: 'right',
 })
 
 const removeButtonStyle = css({
@@ -65,6 +71,9 @@ const coloredEntryStyle = css({
 })
 
 export const TableComponentLayout: React.FC<TableComponentLayoutProps> = ({ table, tableIndex }) => {
+const dispatch = useContext(DispatchContext);
+  const removeTable = useCallback(() => dispatch(removeTableAction(tableIndex)), []);
+
   return (
     <TableComponent table={table} tableIndex={tableIndex} render={({
       tableName,
@@ -86,7 +95,10 @@ export const TableComponentLayout: React.FC<TableComponentLayoutProps> = ({ tabl
               <button css={css(removeButtonStyle, addStyle)} onClick={removeEntry} key={`close-table-entry-${entryIndex}`}>X</button>
             ];
           })}
-          <PrimaryButton onClick={addTableEntry} css={addEntryLayout}>Add Table Entry</PrimaryButton>
+          <div css={tableButtons}>
+            <PrimaryButton onClick={addTableEntry} >Add Table Entry</PrimaryButton>
+            <PrimaryButton style={removeTableButton} onClick={removeTable} >Remove Table</PrimaryButton>
+          </div>
         </SubLayout>
       )} />
   )
