@@ -5,6 +5,7 @@ import { StateContext } from "../App";
 import { addToHistory } from "../state/generator/generatorActions";
 import { getResult } from "../state/generator/rollSelectors";
 import { AppState } from "../state/rootInitialState";
+import { PrimaryButton } from './shared/PrimaryButton';
 
 export const RollOnTableButton: React.FC = () => {
   const state: AppState = useContext(StateContext)
@@ -12,6 +13,6 @@ export const RollOnTableButton: React.FC = () => {
 
   const pushRollToHistory = useCallback(() => dispatch(addToHistory(getResult(state))), [state]);
   return (
-    <button onClick={pushRollToHistory}>Roll on Table</button>
+    <PrimaryButton onClick={pushRollToHistory}>Roll on Table</PrimaryButton>
   )
 }

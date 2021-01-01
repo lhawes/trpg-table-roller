@@ -51,7 +51,8 @@ const ClearHistoryLayout = css({
 
 const gridLayout = css({
   gridTemplateColumns: `3fr 1fr 1fr 1fr `,
-  gridTemplateRows: `auto ${inputHeight} 1fr ${inputHeight}`,
+  // gridTemplateRows: `auto ${inputHeight} 1fr ${inputHeight}`,
+  gridTemplateRows: 'auto',
   columnGap: '10px',
 });
 

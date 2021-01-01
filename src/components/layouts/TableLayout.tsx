@@ -3,6 +3,7 @@ import { jsx, css } from '@emotion/react'
 import { ChangeEvent } from "react";
 import { inputHeight, inputWidth, lightRed } from '../../constants/styleConstants';
 import { Table } from "../../types/Table";
+import { PrimaryButton } from '../shared/PrimaryButton';
 import { SubLayout } from "../shared/SubLayout";
 import { UserInputPrimary } from '../shared/UserInputPrimary';
 import { TableComponent } from "../Table";
@@ -85,7 +86,7 @@ export const TableComponentLayout: React.FC<TableComponentLayoutProps> = ({ tabl
               <button css={css(removeButtonStyle, addStyle)} onClick={removeEntry} key={`close-table-entry-${entryIndex}`}>X</button>
             ];
           })}
-          <button onClick={addTableEntry} css={addEntryLayout}>Add Table Entry</button>
+          <PrimaryButton onClick={addTableEntry} css={addEntryLayout}>Add Table Entry</PrimaryButton>
         </SubLayout>
       )} />
   )

@@ -7,6 +7,7 @@ import { AppState } from "../state/rootInitialState";
 import { Table } from '../types/Table';
 import { emptyTable } from "../utils/emptyTable";
 import { TableComponentLayout } from "./layouts/TableLayout";
+import { PrimaryButton } from "./shared/PrimaryButton";
 
 export const TableList: React.FC = () => {
   const dispatch = useContext(DispatchContext);
@@ -20,7 +21,7 @@ export const TableList: React.FC = () => {
       {tables.map((tableEntry: Table, i: number) =>
         <TableComponentLayout table={tableEntry} tableIndex={i} key={`table${i}`}/>
       )}
-      <button onClick={addTable}>Add Table</button>
+      <PrimaryButton onClick={addTable}>Add Table</PrimaryButton>
     </>
   )
 }

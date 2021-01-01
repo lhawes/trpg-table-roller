@@ -3,3 +3,4 @@ export const inputWidth = '24px';
 export const inputLeftPadding = '20px';
 
 export const lightRed = '#fecccb';
+export const red = '#fba9a8';
