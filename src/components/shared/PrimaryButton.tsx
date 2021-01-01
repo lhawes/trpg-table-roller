@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx, SerializedStyles } from '@emotion/react'
 import { useMemo } from 'react';
-import { red } from '../../constants/styleConstants';
+import { redScheme } from '../../constants/styleConstants';
 
 interface PrimaryButtonProps {
   style?: SerializedStyles;
@@ -10,7 +10,7 @@ interface PrimaryButtonProps {
 
 const primaryButtonStyle = css({
   border: 'none',
-  backgroundColor: red,
+  backgroundColor: redScheme.highlightPallette.secondary,
   color: 'white',
   width: 'auto',
   padding: '8px',

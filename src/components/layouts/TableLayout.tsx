@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react'
 import { ChangeEvent } from "react";
-import { inputHeight, inputWidth, lightRed } from '../../constants/styleConstants';
+import { inputHeight, inputWidth, redScheme } from '../../constants/styleConstants';
 import { Table } from "../../types/Table";
 import { PrimaryButton } from '../shared/PrimaryButton';
 import { SubLayout } from "../shared/SubLayout";
@@ -61,7 +61,7 @@ const removeButtonStyle = css({
 });
 
 const coloredEntryStyle = css({
-  backgroundColor: lightRed,
+  backgroundColor: redScheme.highlightPallette.primary,
 })
 
 export const TableComponentLayout: React.FC<TableComponentLayoutProps> = ({ table, tableIndex }) => {

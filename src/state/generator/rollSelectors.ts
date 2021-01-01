@@ -37,7 +37,7 @@ export const getResult = (state: AppState): string => {
 
   return entries.reduce((result, value) => {
     return `${result} ${value}`
-  });
+  }, '');
 };
 
 export const getTextTemplatePreview = (state: AppState): string => {
