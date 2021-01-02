@@ -8,10 +8,10 @@ export const backgroundForRed = '#f9f5ec';
 
 export const redScheme = {
   highlightPallette: {
-    primary: '#FECCCB', // main color
-    secondary: '#EF616C', // highlight color
-    light: '#FFF6F6', // light
-    dark: '#2F2C23' // dark
+    primary: '#FECCCB', // main color, good
+    secondary: '#EF616C', // highlight color, good
+    light: '#FFF6F6', // light, too red want more yellow biege
+    dark: '#2F2C23' // dark, good I like the off black
   }
 
 }

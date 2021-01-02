@@ -8,6 +8,7 @@ import { HistoryList } from '../HistoryList';
 import { RollOnTableButton } from '../RollOnTableButton';
 import { BodyContainer } from '../shared/BodyContainer';
 import { Section } from '../shared/Section';
+import { SubLayout } from '../shared/SubLayout';
 import { TableListLayout } from './TableListLayout';
 import { TextTemplateLayout } from './TextTemplateLayout'
 
@@ -15,45 +16,53 @@ const GeneratorNameLayout = css({
   gridColumn: 1,
   gridRow: 1,
 });
-const TextTemplateLayoutStyles = css({
-  gridColumnStart: 2,
-  gridColumnEnd: 5,
-  gridRow: 1,
-});
 const TableListSectionLayout = css({
   gridColumn: 1,
-  gridRowStart: 2,
-  gridRowEnd: 5,
+  gridRow: 2,
+});
+const TextTemplateLayoutStyles = css({
+  gridColumnStart: 1,
+  gridColumnEnd: 4,
+  gridRow: 1,
 });
 const RollOnTableButtonLayout = css({
-  gridColumnStart: 2,
-  gridColumnEnd: 5,
+  gridColumnStart: 1,
+  gridColumnEnd: 4,
   gridRow: 2,
 });
 const HistoryListLayout = css({
-  gridColumnStart: 2,
-  gridColumnEnd: 5,
+  gridColumnStart: 1,
+  gridColumnEnd: 4,
   gridRow: 3,
 });
 const ExportDataButtonLayout = css({
-  gridColumn: 2,
+  gridColumn: 1,
   gridRow: 4,
 });
 const FileUploadInputLayout = css({
-  gridColumn: 3,
+  gridColumn: 2,
   gridRow: 4,
 });
 const ClearHistoryLayout = css({
-  gridColumn: 4,
+  gridColumn: 3,
   gridRow: 4,
 });
 
-const gridLayout = css({
-  gridTemplateColumns: `3fr 1fr 1fr 1fr `,
-  // gridTemplateRows: `auto ${inputHeight} 1fr ${inputHeight}`,
+const pageLayout = css({
+  gridTemplateColumns: `1fr 1fr`,
   gridTemplateRows: 'auto',
-  columnGap: '10px',
+  columnGap: '12px'
+})
+
+const tableGridLayout = css({
+  gridTemplateColumns: `1fr`,
+  gridTemplateRows: 'auto',
 });
+
+const resultGridLayout = css({
+  gridTemplateColumns: `1fr 1fr 1fr `,
+  gridTemplateRows: '100px auto 1fr auto',
+})
 
 const generatorNameStyles = css({
   width: '100%',
@@ -68,15 +77,19 @@ const generatorNameStyles = css({
 export const BasePageLayout: React.FC = () => {
   return (
     <BodyContainer>
-      <Section layout={gridLayout}>
+      <Section layout={pageLayout}>
+        <SubLayout layout={tableGridLayout}>
         <div css={GeneratorNameLayout}><GeneratorName style={generatorNameStyles}/></div>
-        <div css={TextTemplateLayoutStyles}><TextTemplateLayout /></div>
         <div css={TableListSectionLayout}><TableListLayout /></div>
+        </SubLayout>
+        <SubLayout layout={resultGridLayout}>
+        <div css={TextTemplateLayoutStyles}><TextTemplateLayout /></div>
         <div css={RollOnTableButtonLayout}><RollOnTableButton /></div>
         <div css={HistoryListLayout}><HistoryList /></div>
         <div css={ExportDataButtonLayout}><ExportDataButton /></div>
         <div css={FileUploadInputLayout}><FileUploadInput /></div>
         <div css={ClearHistoryLayout}><ClearHistory /></div>
+        </SubLayout>
       </Section>
     </BodyContainer>
   );
