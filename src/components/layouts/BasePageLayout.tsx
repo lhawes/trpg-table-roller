@@ -27,9 +27,16 @@ const TextTemplateLayoutStyles = css({
 });
 const RollOnTableButtonLayout = css({
   gridColumnStart: 1,
-  gridColumnEnd: 4,
+  gridColumnEnd: 3,
   gridRow: 2,
 });
+const rollResultLayout = css({
+  gridColumnStart: 2,
+  gridColumnEnd: 4,
+  gridRow: 2,
+  fontSize: '18px',
+  margin: '16px 0',
+})
 const HistoryListLayout = css({
   gridColumnStart: 1,
   gridColumnEnd: 4,
@@ -42,10 +49,12 @@ const ExportDataButtonLayout = css({
 const FileUploadInputLayout = css({
   gridColumn: 2,
   gridRow: 4,
+  justifySelf: 'middle'
 });
 const ClearHistoryLayout = css({
   gridColumn: 3,
   gridRow: 4,
+  justifySelf: 'end'
 });
 
 const pageLayout = css({
@@ -56,23 +65,24 @@ const pageLayout = css({
 
 const tableGridLayout = css({
   gridTemplateColumns: `1fr`,
-  gridTemplateRows: 'auto',
+  gridTemplateRows: '65px auto',
 });
 
 const resultGridLayout = css({
   gridTemplateColumns: `1fr 1fr 1fr `,
-  gridTemplateRows: '100px auto 1fr auto',
+  gridTemplateRows: 'auto auto 1fr auto',
 })
 
 const generatorNameStyles = css({
   width: '100%',
   fontSize: '30px',
   padding: '0 0 5px 0',
-  margin: '20px 0 16px 0',
+  margin: '36px 0 0 0',
   '&:hover,&:focus': {
     padding: '0 0 4px 0',
-  }
-})
+  },
+  fontWeight: 'bold',
+});
 
 export const BasePageLayout: React.FC = () => {
   return (
@@ -83,8 +93,9 @@ export const BasePageLayout: React.FC = () => {
         <div css={TableListSectionLayout}><TableListLayout /></div>
         </SubLayout>
         <SubLayout layout={resultGridLayout}>
-        <div css={TextTemplateLayoutStyles}><TextTemplateLayout /></div>
+        <TextTemplateLayout style={TextTemplateLayoutStyles} />
         <div css={RollOnTableButtonLayout}><RollOnTableButton /></div>
+        <div css={rollResultLayout}>Table Roll Results:</div>
         <div css={HistoryListLayout}><HistoryList /></div>
         <div css={ExportDataButtonLayout}><ExportDataButton /></div>
         <div css={FileUploadInputLayout}><FileUploadInput /></div>

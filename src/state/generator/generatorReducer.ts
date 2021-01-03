@@ -8,7 +8,10 @@ export const generatorStateKey: string = 'generator';
 export const generatorInitialState: RPGGenerator = {
   generatorName: '',
   textTemplate: '',
-  tables: [],
+  tables: [{
+    name: '',
+    entries: ['']
+  }],
   operations: [],
   history: [],
 }

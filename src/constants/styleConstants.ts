@@ -10,8 +10,9 @@ export const redScheme = {
   highlightPallette: {
     primary: '#FECCCB', // main color, good
     secondary: '#EF616C', // highlight color, good
+    blue: '#0090B5', // blue
+
     light: '#FFF6F6', // light, too red want more yellow biege
     dark: '#2F2C23' // dark, good I like the off black
   }
-
 }

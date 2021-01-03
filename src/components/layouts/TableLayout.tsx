@@ -6,9 +6,11 @@ import { inputHeight, inputWidth, redScheme } from '../../constants/styleConstan
 import { removeTableAction } from '../../state/generator/generatorActions';
 import { Table } from "../../types/Table";
 import { PrimaryButton } from '../shared/PrimaryButton';
+import { SecondaryButton } from '../shared/SecondaryButton';
 import { SubLayout } from "../shared/SubLayout";
 import { UserInputPrimary } from '../shared/UserInputPrimary';
 import { TableComponent } from "../Table";
+import { TableNameLayout } from './TableNameLayout';
 
 export interface TableEntryProps {
   value: string,
@@ -35,16 +37,10 @@ const IndividualTableGrid = css({
   gridTemplateRows: `1fr`,
 });
 
-const tableNameLayout = css({
+const tableNameStyle = css({
   gridColumnStart: 1,
   gridColumnEnd: 3,
   gridRow: 1,
-  fontSize: '18px',
-  padding: '0 0 3px 0',
-  margin: '18px 0 0 0',
-  '&:hover,&:focus': {
-    padding: '0 0 2px 0',
-  }
 })
 
 const tableButtons = css({
@@ -62,7 +58,7 @@ const removeButtonStyle = css({
   appearance: 'none',
   backgroundColor: 'transparent',
   '&:hover,&:focus': {},
-  height: `${inputHeight} + 1px`,
+  // height: `${inputHeight} + 1px`,
   padding: '0 0 1px 0'
 });
 
@@ -71,8 +67,8 @@ const coloredEntryStyle = css({
 })
 
 export const TableComponentLayout: React.FC<TableComponentLayoutProps> = ({ table, tableIndex }) => {
-const dispatch = useContext(DispatchContext);
-  const removeTable = useCallback(() => dispatch(removeTableAction(tableIndex)), []);
+  const dispatch = useContext(DispatchContext);
+  const removeTable = useCallback(() => dispatch(removeTableAction(tableIndex)), [tableIndex]);
 
   return (
     <TableComponent table={table} tableIndex={tableIndex} render={({
@@ -83,7 +79,7 @@ const dispatch = useContext(DispatchContext);
       handleLastEntryEnterKey
     }: TableStaterenderProps) => (
         <SubLayout layout={IndividualTableGrid}>
-          <UserInputPrimary value={tableName} style={tableNameLayout} onChange={updateTableName} placeHolder='Table name'/>
+          <div css={tableNameStyle}><TableNameLayout tableName={tableName} updateTableName={updateTableName} tableLength={table.entries.length} tableIndex={tableIndex} /></div>
           { tableEntries.map(({ value, changeEntry, entryIndex, removeEntry }: TableEntryProps) => {
             const addStyle = entryIndex % 2 ? coloredEntryStyle : undefined;
             let onKeyDown
@@ -97,7 +93,7 @@ const dispatch = useContext(DispatchContext);
           })}
           <div css={tableButtons}>
             <PrimaryButton onClick={addTableEntry} >Add Table Entry</PrimaryButton>
-            <PrimaryButton style={removeTableButton} onClick={removeTable} >Remove Table</PrimaryButton>
+            <SecondaryButton style={removeTableButton} onClick={removeTable} >Remove Table</SecondaryButton>
           </div>
         </SubLayout>
       )} />

@@ -1,7 +1,13 @@
-import React, { useCallback, useContext } from "react";
+/** @jsx jsx */
+import { css, jsx } from '@emotion/react'
+import { useCallback, useContext } from "react";
 import { DispatchContext } from "../App";
 import { updateStateFromFileAction } from "../state/generator/generatorActions";
 import { getFile, uploadInputId } from "../utils/uploadFile";
+
+const uploadStyle = css({
+  margin: '16px',
+})
 
 export const FileUploadInput: React.FC = () => {
   const dispatch = useContext(DispatchContext);
@@ -9,6 +15,6 @@ export const FileUploadInput: React.FC = () => {
   const updateStateFromFile = useCallback((content) => dispatch(updateStateFromFileAction(content)), []);
   const getFileHandler = useCallback(getFile(updateStateFromFile), [updateStateFromFile]);
   return (
-    <input id={uploadInputId} type="file" onChange={getFileHandler}></input>
+    <input id={uploadInputId} css={uploadStyle} type="file" onChange={getFileHandler}></input>
   );
 }

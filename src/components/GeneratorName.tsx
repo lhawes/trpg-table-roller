@@ -23,6 +23,6 @@ export const GeneratorName: React.FC<GeneratorNameProps> = ({
   }, [dispatch]);
 
   return (
-    <UserInputPrimary value={generatorName} style={style} onChange={changeGeneratorNameTemplate} placeHolder='Generator name'/>
+    <UserInputPrimary value={generatorName} style={style} onChange={changeGeneratorNameTemplate} placeHolder='Table Generator name'/>
   )
 }

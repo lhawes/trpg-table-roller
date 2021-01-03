@@ -8,7 +8,12 @@ const headerContainerStyle = css({
 
 const headerStyle = css({
   backgroundColor: 'black',
-  color: 'white'
+  color: 'white',
+  padding: '8px'
+});
+
+const siteNameTitleStyle = css({
+  fontWeight: 'bold',
 })
 
 export const Header: React.FC = () => {
@@ -16,7 +21,7 @@ export const Header: React.FC = () => {
     <div css={headerContainerStyle}>
     <BodyContainer>
       <header css={headerStyle}>
-        TRPG table roller
+          <span css={siteNameTitleStyle}>TRPG table roller</span>: A tool to create multi table rollers
       </header>
     </BodyContainer>
     </div>
