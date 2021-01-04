@@ -2,6 +2,7 @@
   "name": "trpg-table-roller",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://lhawes.github.io",
   "dependencies": {
     "@emotion/babel-plugin": "^11.1.2",
     "@emotion/react": "^11.1.3",
