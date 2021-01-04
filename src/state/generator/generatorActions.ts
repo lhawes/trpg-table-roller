@@ -1,4 +1,5 @@
 import { AnyAction } from "../../types/anyAction";
+import { RPGGenerator } from "../../types/Generator";
 import { Table } from "../../types/Table";
 import { GeneratorActionTypes } from "./generatorActionTypes";
 
@@ -77,7 +78,7 @@ export const changeTableNameAction = (tableName: string, tableIndex: number): An
   }
 }
 
-export const updateStateFromFileAction = (fileState: any) => {
+export const updateStateFromFileAction = (fileState: Record<string, RPGGenerator>) => {
   return {
     type: GeneratorActionTypes.UPDATE_STATE_FROM_FILE,
     payload: {

@@ -14,6 +14,7 @@ export const generatorInitialState: RPGGenerator = {
   }],
   operations: [],
   history: [],
+  version: 1,
 }
 
 export const generatorReducer = (state: RPGGenerator = generatorInitialState, action: AnyAction) => {

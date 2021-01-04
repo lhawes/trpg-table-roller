@@ -36,7 +36,6 @@ export const TableComponent: React.FC<TableProps>= ({ table, tableIndex, render 
   }, [tableIndex, dispatch]);
 
   const handleLastEntryEnterKey = useCallback((e: React.KeyboardEvent) => {
-    console.log(e.key, e)
     if (e.key === 'Enter') {
       return dispatch(addTableEntryAction('', tableIndex));
     }

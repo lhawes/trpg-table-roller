@@ -5,6 +5,7 @@ import { ExportDataButton } from '../ExportDataButton';
 import { FileUploadInput } from '../FileUploadInput';
 import { GeneratorName } from '../GeneratorName';
 import { HistoryList } from '../HistoryList';
+import { LoadExampleDataButton } from '../LoadExampleDataButton';
 import { RollOnTableButton } from '../RollOnTableButton';
 import { BodyContainer } from '../shared/BodyContainer';
 import { Section } from '../shared/Section';
@@ -12,20 +13,20 @@ import { SubLayout } from '../shared/SubLayout';
 import { TableListLayout } from './TableListLayout';
 import { TextTemplateLayout } from './TextTemplateLayout'
 
-const GeneratorNameLayout = css({
+const generatorNameLayout = css({
   gridColumn: 1,
   gridRow: 1,
 });
-const TableListSectionLayout = css({
+const tableListSectionLayout = css({
   gridColumn: 1,
   gridRow: 2,
 });
-const TextTemplateLayoutStyles = css({
+const textTemplateLayoutStyles = css({
   gridColumnStart: 1,
   gridColumnEnd: 4,
   gridRow: 1,
 });
-const RollOnTableButtonLayout = css({
+const rollOnTableButtonLayout = css({
   gridColumnStart: 1,
   gridColumnEnd: 3,
   gridRow: 2,
@@ -37,24 +38,28 @@ const rollResultLayout = css({
   fontSize: '18px',
   margin: '16px 0',
 })
-const HistoryListLayout = css({
+const historyListLayout = css({
   gridColumnStart: 1,
   gridColumnEnd: 4,
   gridRow: 3,
 });
-const ExportDataButtonLayout = css({
+const exportDataButtonLayout = css({
   gridColumn: 1,
   gridRow: 4,
 });
-const FileUploadInputLayout = css({
+const fileUploadInputLayout = css({
   gridColumn: 2,
   gridRow: 4,
   justifySelf: 'middle'
 });
-const ClearHistoryLayout = css({
+const clearHistoryLayout = css({
   gridColumn: 3,
   gridRow: 4,
   justifySelf: 'end'
+});
+const loadExampleDataLayout = css({
+  gridColumn: 1,
+  gridRow: 5,
 });
 
 const pageLayout = css({
@@ -89,17 +94,18 @@ export const BasePageLayout: React.FC = () => {
     <BodyContainer>
       <Section layout={pageLayout}>
         <SubLayout layout={tableGridLayout}>
-        <div css={GeneratorNameLayout}><GeneratorName style={generatorNameStyles}/></div>
-        <div css={TableListSectionLayout}><TableListLayout /></div>
+        <div css={generatorNameLayout}><GeneratorName style={generatorNameStyles}/></div>
+        <div css={tableListSectionLayout}><TableListLayout /></div>
         </SubLayout>
         <SubLayout layout={resultGridLayout}>
-        <TextTemplateLayout style={TextTemplateLayoutStyles} />
-        <div css={RollOnTableButtonLayout}><RollOnTableButton /></div>
+        <TextTemplateLayout style={textTemplateLayoutStyles} />
+        <div css={rollOnTableButtonLayout}><RollOnTableButton /></div>
         <div css={rollResultLayout}>Table Roll Results:</div>
-        <div css={HistoryListLayout}><HistoryList /></div>
-        <div css={ExportDataButtonLayout}><ExportDataButton /></div>
-        <div css={FileUploadInputLayout}><FileUploadInput /></div>
-        <div css={ClearHistoryLayout}><ClearHistory /></div>
+        <div css={historyListLayout}><HistoryList /></div>
+        <div css={exportDataButtonLayout}><ExportDataButton /></div>
+        <div css={fileUploadInputLayout}><FileUploadInput /></div>
+        <div css={clearHistoryLayout}><ClearHistory /></div>
+          <div css={loadExampleDataLayout}><LoadExampleDataButton /></div>
         </SubLayout>
       </Section>
     </BodyContainer>

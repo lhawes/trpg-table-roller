@@ -6,6 +6,7 @@ export interface RPGGenerator {
   tables: Table[],
   operations: TableOperation[],
   history: string[],
+  version: number
 }
 
 export interface TableOperation {
