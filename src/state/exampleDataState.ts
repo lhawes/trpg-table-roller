@@ -48,7 +48,7 @@ export const exampleDataState: Record<string, RPGGenerator> = {
           `enhances the drinker's vision`,
           'makes a random sense sensitive to magic fields',
           'heals minor cuts and bruises',
-          'reduces the gravity affecting the drinker'
+          'reduce the gravity affecting the drinker'
         ]
       },
       {
@@ -65,7 +65,7 @@ export const exampleDataState: Record<string, RPGGenerator> = {
       }],
     operations: [],
     history: [
-      'A ceramic Elven vase that smells like dung and looks worse than it smells. If ingested it will reduces the gravity affecting the drinker, but will also make the consumer break out in hives.'
+      'A ceramic Elven vase that smells like dung and looks worse than it smells. If ingested it will reduce the gravity affecting the drinker, but will also make the consumer break out in hives.'
     ],
     version: 1,
   },
