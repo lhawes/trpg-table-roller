@@ -4,12 +4,12 @@ import { generatorStateKey } from './generator/generatorReducer';
 export const exampleDataState: Record<string, RPGGenerator> = {
   [generatorStateKey]: {
     generatorName: 'Potion Maker',
-    textTemplate: 'A {{1}} that {{2}} {{3}}. If ingested it will {{4}}, but will also {{5}}.',
+    textTemplate: 'A {{1}} that {{2}} {{3}}. If ingested it will {{4}}, but will also {{5}} and {{5}}.',
     tables: [{
       name: 'Bottle Type',
       entries: [
         'clear glass bottle',
-        'sqaure green container',
+        'square green container',
         'topped drinking horn',
         'old corked wine bottle',
         'clay jug with an old cork',
