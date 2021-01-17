@@ -12,7 +12,6 @@ export const RollOnTableButton: React.FC = () => {
   const dispatch = useContext(DispatchContext);
 
   const pushRollToHistory = useCallback(() => dispatch(addToHistory(getMultiRollResult(state))), [state]);
-  // const pushRollToHistory = useCallback(() => dispatch(addToHistory(getResult(state))), [state]);
   return (
     <PrimaryButton onClick={pushRollToHistory}>Roll on Table</PrimaryButton>
   )
