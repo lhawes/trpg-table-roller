@@ -13,6 +13,7 @@ Feature: Add weights for table entries
 Fix:     Auto focus new table entry
 
 
+
 Styles:
 1st edition with paper texture
 https://www.enworld.org/attachments/weapons_list-png.61091/
