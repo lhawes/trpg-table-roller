@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/trpg-table-roller/precache-manifest.72271d87c63d74d1b1ff5ab86e9f726c.js"
+  "/trpg-table-roller/precache-manifest.223b0f4880e4d7d12f9da6154c74bdf3.js"
 );
 
 self.addEventListener('message', (event) => {
