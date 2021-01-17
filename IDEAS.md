@@ -10,6 +10,7 @@ Fix:     Auto focus new table entry
 Request: Selectively reroll a result
 Request: Add weighted entry mechanic
 Request: Output as csv
+Request: Allow for multiple rolls of the same table in the same entry (roll 2 etc)
 
 
 Styles:
