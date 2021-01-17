@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/trpg-table-roller/static/css/main.88824ec2.chunk.css",
-    "main.js": "/trpg-table-roller/static/js/main.6a2e77ea.chunk.js",
-    "main.js.map": "/trpg-table-roller/static/js/main.6a2e77ea.chunk.js.map",
+    "main.js": "/trpg-table-roller/static/js/main.9f92b940.chunk.js",
+    "main.js.map": "/trpg-table-roller/static/js/main.9f92b940.chunk.js.map",
     "runtime-main.js": "/trpg-table-roller/static/js/runtime-main.60fdab24.js",
     "runtime-main.js.map": "/trpg-table-roller/static/js/runtime-main.60fdab24.js.map",
     "static/js/2.8aa1c046.chunk.js": "/trpg-table-roller/static/js/2.8aa1c046.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.d1fda965.chunk.js": "/trpg-table-roller/static/js/3.d1fda965.chunk.js",
     "static/js/3.d1fda965.chunk.js.map": "/trpg-table-roller/static/js/3.d1fda965.chunk.js.map",
     "index.html": "/trpg-table-roller/index.html",
-    "precache-manifest.72271d87c63d74d1b1ff5ab86e9f726c.js": "/trpg-table-roller/precache-manifest.72271d87c63d74d1b1ff5ab86e9f726c.js",
+    "precache-manifest.223b0f4880e4d7d12f9da6154c74bdf3.js": "/trpg-table-roller/precache-manifest.223b0f4880e4d7d12f9da6154c74bdf3.js",
     "service-worker.js": "/trpg-table-roller/service-worker.js",
     "static/css/main.88824ec2.chunk.css.map": "/trpg-table-roller/static/css/main.88824ec2.chunk.css.map"
   },
@@ -18,6 +18,6 @@
     "static/js/runtime-main.60fdab24.js",
     "static/js/2.8aa1c046.chunk.js",
     "static/css/main.88824ec2.chunk.css",
-    "static/js/main.6a2e77ea.chunk.js"
+    "static/js/main.9f92b940.chunk.js"
   ]
 }
