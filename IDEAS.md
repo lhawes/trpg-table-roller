@@ -10,8 +10,8 @@ Fix:     Auto focus new table entry
 Request: Selectively reroll a result
 Request: Add weighted entry mechanic
 Request: Output as csv
-Request: Allow for multiple rolls of the same table in the same entry (roll 2 etc)
 Fix:     Click roll from initial state adds an entry?
+Feature: Allow user to specify whether the same results are allowed for multi rolls ({{1}}, {{1}} => cat, cat)
 
 
 Styles:
