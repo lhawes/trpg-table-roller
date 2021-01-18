@@ -3,7 +3,7 @@ import { AppState } from '../state/rootInitialState';
 
 let canSave = false;
 try {
-  canSave = !!new Blob;
+  canSave = !!new Blob();
 } catch (e) {
   console.error(e)
 }

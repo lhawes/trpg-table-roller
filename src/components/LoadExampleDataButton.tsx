@@ -9,7 +9,7 @@ export const LoadExampleDataButton: React.FC = () => {
   const dispatch = useContext(DispatchContext);
 const loadExampleDataHandler = useCallback( () => {
   dispatch(updateStateFromFileAction(exampleDataState))
-  }, []);
+}, [dispatch]);
   return (
     <SecondaryButton onClick={loadExampleDataHandler}>Load Example Data</SecondaryButton>
   )
