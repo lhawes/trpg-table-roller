@@ -87,7 +87,6 @@ export const getMultiRollResult = (state: AppState): string => {
       if (templatePiece.match(delimiter)) {
         const tableIndex = extractIndexFromDelimiter(templatePiece);
         const result = getRandomEntryFromTable(state, tableIndex);
-        console.log({result})
         return result
       }
       return templatePiece
