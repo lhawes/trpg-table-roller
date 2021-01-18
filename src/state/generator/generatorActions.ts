@@ -1,5 +1,5 @@
 import { AnyAction } from "../../types/anyAction";
-import { RPGGenerator } from "../../types/Generator";
+import { RPGGenerator, TableOperation } from "../../types/Generator";
 import { Table } from "../../types/Table";
 import { GeneratorActionTypes } from "./generatorActionTypes";
 
@@ -80,14 +80,9 @@ export const clearHistory = () => ({
     type: GeneratorActionTypes.CLEAR_HISTORY,
 })
 
-interface addConditionalOperationAttributes {
-  currentTableIndex: number,
-  rollIndexes: number[],
-  nextTableIndex: number,
-}
-export const addConditionalOperation = (operationAttributes: addConditionalOperationAttributes) => ({
+export const addConditionalOperation = (operationAttributes: TableOperation) => ({
   type: GeneratorActionTypes.ADD_CONDITIONAL_OPERATION,
-  payload: { details: { ...operationAttributes } }
+  payload: { operationAttributes: { ...operationAttributes } }
 });
 
 export const removeConditionalOperation = (operationIndex: number) => ({
@@ -97,10 +92,10 @@ export const removeConditionalOperation = (operationIndex: number) => ({
   }
 });
 
-export const changeConditionalOperation = (operationIndex: number, operationAttributes: addConditionalOperationAttributes) => ({
+export const changeConditionalOperation = (operationIndex: number, operationAttributes: TableOperation) => ({
   type: GeneratorActionTypes.CHANGE_CONDITIONAL_OPERATION,
   payload: {
     operationIndex,
-    details: { ...operationAttributes }
+    operationAttributes: { ...operationAttributes }
   }
 });
