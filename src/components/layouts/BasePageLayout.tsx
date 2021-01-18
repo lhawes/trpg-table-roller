@@ -10,6 +10,7 @@ import { RollOnTableButton } from '../RollOnTableButton';
 import { BodyContainer } from '../shared/BodyContainer';
 import { Section } from '../shared/Section';
 import { SubLayout } from '../shared/SubLayout';
+import { TabSkeleton } from '../shared/TabSkeleton';
 import { TableListLayout } from './TableListLayout';
 import { TextTemplateLayout } from './TextTemplateLayout'
 
@@ -94,19 +95,22 @@ export const BasePageLayout: React.FC = () => {
     <BodyContainer>
       <Section layout={pageLayout}>
         <SubLayout layout={tableGridLayout}>
-        <div css={generatorNameLayout}><GeneratorName style={generatorNameStyles}/></div>
-        <div css={tableListSectionLayout}><TableListLayout /></div>
+          <div css={generatorNameLayout}><GeneratorName style={generatorNameStyles}/></div>
+          <div css={tableListSectionLayout}><TableListLayout /></div>
         </SubLayout>
-        <SubLayout layout={resultGridLayout}>
-        <TextTemplateLayout style={textTemplateLayoutStyles} />
-        <div css={rollOnTableButtonLayout}><RollOnTableButton /></div>
-        <div css={rollResultLayout}>Table Roll Results:</div>
-        <div css={historyListLayout}><HistoryList /></div>
-        <div css={exportDataButtonLayout}><ExportDataButton /></div>
-        <div css={fileUploadInputLayout}><FileUploadInput /></div>
-        <div css={clearHistoryLayout}><ClearHistory /></div>
-          <div css={loadExampleDataLayout}><LoadExampleDataButton /></div>
-        </SubLayout>
+        <TabSkeleton components={[
+          <SubLayout layout={resultGridLayout}>
+            <TextTemplateLayout style={textTemplateLayoutStyles} />
+            <div css={rollOnTableButtonLayout}><RollOnTableButton /></div>
+            <div css={rollResultLayout}>Table Roll Results:</div>
+            <div css={historyListLayout}><HistoryList /></div>
+            <div css={exportDataButtonLayout}><ExportDataButton /></div>
+            <div css={fileUploadInputLayout}><FileUploadInput /></div>
+            <div css={clearHistoryLayout}><ClearHistory /></div>
+            <div css={loadExampleDataLayout}><LoadExampleDataButton /></div>
+          </SubLayout>,
+          <div>second</div>
+        ]} />
       </Section>
     </BodyContainer>
   );
