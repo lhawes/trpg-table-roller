@@ -13,7 +13,7 @@ const addTableButton = css({
 })
 export const TableListLayout: React.FC = () => {
   const dispatch = useContext(DispatchContext);
-  const addTable = useCallback(() => dispatch(addTableAction(emptyTable())), []);
+  const addTable = useCallback(() => dispatch(addTableAction(emptyTable())), [dispatch]);
 
   return (
     <SubLayout>

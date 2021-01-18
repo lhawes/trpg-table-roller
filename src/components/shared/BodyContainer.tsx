@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx, css, SerializedStyles } from "@emotion/react";
 import { useMemo } from "react";
-import { Header } from "../Header";
 
 const bodyContainerCss = css({
   maxWidth: '1200px',
