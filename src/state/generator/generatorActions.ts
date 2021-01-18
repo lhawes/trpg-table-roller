@@ -69,30 +69,30 @@ export const updateStateFromFileAction = (fileState: Record<string, RPGGenerator
     }
 })
 
-export const addToHistory = (tableRollResult: string) => ({
+export const addToHistoryAction = (tableRollResult: string) => ({
     type: GeneratorActionTypes.ADD_TO_HISTORY,
     payload: {
       tableRollResult
     }
 })
 
-export const clearHistory = () => ({
+export const clearHistoryAction = () => ({
     type: GeneratorActionTypes.CLEAR_HISTORY,
 })
 
-export const addConditionalOperation = (operationAttributes: TableOperation) => ({
+export const addConditionalOperationAction = (operationAttributes: TableOperation) => ({
   type: GeneratorActionTypes.ADD_CONDITIONAL_OPERATION,
   payload: { operationAttributes: { ...operationAttributes } }
 });
 
-export const removeConditionalOperation = (operationIndex: number) => ({
+export const removeConditionalOperationAction = (operationIndex: number) => ({
   type: GeneratorActionTypes.REMOVE_CONDITIONAL_OPERATION,
   payload: {
     operationIndex,
   }
 });
 
-export const changeConditionalOperation = (operationIndex: number, operationAttributes: TableOperation) => ({
+export const changeConditionalOperationAction = (operationIndex: number, operationAttributes: TableOperation) => ({
   type: GeneratorActionTypes.CHANGE_CONDITIONAL_OPERATION,
   payload: {
     operationIndex,

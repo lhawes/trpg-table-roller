@@ -3,7 +3,7 @@ import { jsx, SerializedStyles } from '@emotion/react';
 import { ChangeEvent } from 'react';
 
 export interface UserInputProps {
-  value: string;
+  value: string | number;
   style?: SerializedStyles;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   placeHolder?: string;

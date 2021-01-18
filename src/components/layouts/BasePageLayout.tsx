@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react'
 import { ClearHistory } from '../ClearHistory';
+import { ConditionalRollTable } from '../ConditionalRollTable';
 import { ExportDataButton } from '../ExportDataButton';
 import { FileUploadInput } from '../FileUploadInput';
 import { GeneratorName } from '../GeneratorName';
@@ -76,14 +77,13 @@ export const BasePageLayout: React.FC = () => {
             <GridCell position={{ col: 1, row: 5 }}><LoadExampleDataButton /></GridCell>
           </SubLayout>,
           <SubLayout layout={conditionalRollGridLayout}>
-            <TextTemplateLayout style={textTemplateLayoutStyles} />
-            <GridCell position={{ col: 1, row: 2 }}>ASDF</GridCell>
+            {/* <TextTemplateLayout style={textTemplateLayoutStyles} /> */}
+            <GridCell position={{ col: 1, row: 2 }}><ConditionalRollTable /></GridCell>
             <GridCell position={{ row: 3, start: 1, end: 3 }}><RollOnTableButton /></GridCell>
             <GridCell
               position={{ start: 2, end: 4, row: 3 }}
               styles={{ fontSize: '18px', margin: '16px 0' }}
             >Conditional Roll Results:</GridCell>
-
             <GridCell position={{ start: 1, end: 4, row: 4 }}><HistoryList /></GridCell>
             <GridCell position={{ col: 1, row: 5 }}><ExportDataButton /></GridCell>
             <GridCell position={{ col: 2, row: 5 }} styles={{ justifySelf: 'middle' }}><FileUploadInput /></GridCell>
