@@ -8,7 +8,7 @@ interface TabSkeletonProps {
 }
 
 export const TabSkeleton: React.FC<TabSkeletonProps> = ({ components }) => {
-  const [tabIndex, setTabIndex] = useState(0);
+  const [tabIndex, setTabIndex] = useState(1);
 
   return (
     <React.Fragment>
