@@ -8,59 +8,17 @@ import { HistoryList } from '../HistoryList';
 import { LoadExampleDataButton } from '../LoadExampleDataButton';
 import { RollOnTableButton } from '../RollOnTableButton';
 import { BodyContainer } from '../shared/BodyContainer';
+import { GridCell } from '../shared/GridCell';
 import { Section } from '../shared/Section';
 import { SubLayout } from '../shared/SubLayout';
 import { TabSkeleton } from '../shared/TabSkeleton';
 import { TableListLayout } from './TableListLayout';
 import { TextTemplateLayout } from './TextTemplateLayout'
 
-const generatorNameLayout = css({
-  gridColumn: 1,
-  gridRow: 1,
-});
-const tableListSectionLayout = css({
-  gridColumn: 1,
-  gridRow: 2,
-});
 const textTemplateLayoutStyles = css({
   gridColumnStart: 1,
   gridColumnEnd: 4,
   gridRow: 1,
-});
-const rollOnTableButtonLayout = css({
-  gridColumnStart: 1,
-  gridColumnEnd: 3,
-  gridRow: 2,
-});
-const rollResultLayout = css({
-  gridColumnStart: 2,
-  gridColumnEnd: 4,
-  gridRow: 2,
-  fontSize: '18px',
-  margin: '16px 0',
-})
-const historyListLayout = css({
-  gridColumnStart: 1,
-  gridColumnEnd: 4,
-  gridRow: 3,
-});
-const exportDataButtonLayout = css({
-  gridColumn: 1,
-  gridRow: 4,
-});
-const fileUploadInputLayout = css({
-  gridColumn: 2,
-  gridRow: 4,
-  justifySelf: 'middle'
-});
-const clearHistoryLayout = css({
-  gridColumn: 3,
-  gridRow: 4,
-  justifySelf: 'end'
-});
-const loadExampleDataLayout = css({
-  gridColumn: 1,
-  gridRow: 5,
 });
 
 const pageLayout = css({
@@ -95,19 +53,22 @@ export const BasePageLayout: React.FC = () => {
     <BodyContainer>
       <Section layout={pageLayout}>
         <SubLayout layout={tableGridLayout}>
-          <div css={generatorNameLayout}><GeneratorName style={generatorNameStyles}/></div>
-          <div css={tableListSectionLayout}><TableListLayout /></div>
+          <GridCell position={{ col: 1, row: 1 }} ><GeneratorName style={generatorNameStyles} /></GridCell>
+          <GridCell position={{ col: 1, row: 2 }} ><TableListLayout /></GridCell>
         </SubLayout>
         <TabSkeleton components={[
           <SubLayout layout={resultGridLayout}>
             <TextTemplateLayout style={textTemplateLayoutStyles} />
-            <div css={rollOnTableButtonLayout}><RollOnTableButton /></div>
-            <div css={rollResultLayout}>Table Roll Results:</div>
-            <div css={historyListLayout}><HistoryList /></div>
-            <div css={exportDataButtonLayout}><ExportDataButton /></div>
-            <div css={fileUploadInputLayout}><FileUploadInput /></div>
-            <div css={clearHistoryLayout}><ClearHistory /></div>
-            <div css={loadExampleDataLayout}><LoadExampleDataButton /></div>
+            <GridCell position={{ row: 2, start: 1, end: 3 }}><RollOnTableButton /></GridCell>
+            <GridCell
+              position={{ start: 2, end: 4, row: 2 }}
+              styles={{ fontSize: '18px', margin: '16px 0' }}
+            >Table Roll Results:</GridCell>
+            <GridCell position={{ start: 1, end: 4, row: 3 }}><HistoryList /></GridCell>
+            <GridCell position={{ col: 1, row: 4 }}><ExportDataButton /></GridCell>
+            <GridCell position={{ col: 2, row: 4 }} styles={{ justifySelf: 'middle' }}><FileUploadInput /></GridCell>
+            <GridCell position={{ col: 3, row: 4 }} styles={{ justifySelf: 'end' }}><ClearHistory /></GridCell>
+            <GridCell position={{ col: 1, row: 5 }}><LoadExampleDataButton /></GridCell>
           </SubLayout>,
           <div>second</div>
         ]} />
