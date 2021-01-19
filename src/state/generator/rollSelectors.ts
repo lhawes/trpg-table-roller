@@ -122,9 +122,9 @@ const normalizeConditionalOperations = (operation: TableOperation): NormalizedOp
     }, {});
 
   return {
-    currentTableIndex: parseInt(operation.currentTableIndex, 10),
+    currentTableIndex: parseInt(operation.currentTableIndex, 10) - 1,
     entryIndexs: entries,
-    nextTableIndex: parseInt(operation.nextTableIndex, 10),
+    nextTableIndex: parseInt(operation.nextTableIndex, 10) - 1,
   }
 }
 

@@ -53,9 +53,9 @@ export const ConditionalRollTableRow: React.FC<ConditionalRollTableRowProps> = (
 
   return (
     <SubLayout css={conditionalRowStyle}>
-      <span>Table Index</span>
-      <span>Roll Indexes</span>
-      <span>Next Table Index</span>
+      <span>If Table:</span>
+      <span>Rolls a:</span>
+      <span>Then Roll on table:</span>
       <UserInput value={currentTableIndex} onChange={updateConditionalOperationHandler('currentTableIndex')} />
       <UserInput value={entryIndexs} onChange={entriesIndexesHandler} />
       <UserInput value={nextTableIndex} onChange={updateConditionalOperationHandler('nextTableIndex')} />
