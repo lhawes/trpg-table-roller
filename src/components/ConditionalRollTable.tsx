@@ -28,6 +28,7 @@ export const ConditionalRollTable: React.FC = () => {
   return (
     <React.Fragment>
       Conditional Roll Operations
+      Roll on table 1 then:
       { conditionalOperations.map(({ currentTableIndex, entryIndexs, nextTableIndex }: TableOperation, index: number) => (
         <ConditionalRollTableRow
           currentTableIndex={currentTableIndex}

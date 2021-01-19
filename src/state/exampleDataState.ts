@@ -63,7 +63,11 @@ export const exampleDataState: Record<string, RPGGenerator> = {
           'magically fix the drinker on the spot'
         ]
       }],
-    operations: [],
+    operations: [{
+      currentTableIndex: '1',
+      entryIndexs: '1, 2, 3, 4',
+      nextTableIndex: '2',
+    }],
     history: [
       'A ceramic Elven vase that smells like dung and looks worse than it smells. If ingested it will reduce the gravity affecting the drinker, but will also make the consumer break out in hives.'
     ],
