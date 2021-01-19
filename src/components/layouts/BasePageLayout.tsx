@@ -84,8 +84,8 @@ export const BasePageLayout: React.FC = () => {
             name: 'Conditional Roll',
             component: (
             <SubLayout layout={conditionalRollGridLayout}>
-              <GridCell position={{ col: 1, row: 2 }}><ConditionalRollTable /></GridCell>
-                <GridCell position={{ row: 3, start: 1, end: 3 }}><ConditionalRollOnTableButton /></GridCell>
+              <GridCell position={{ col: 1, row: 2, start: 1, end: 4 }}><ConditionalRollTable /></GridCell>
+              <GridCell position={{ row: 3, start: 1, end: 3 }}><ConditionalRollOnTableButton /></GridCell>
               <GridCell
                 position={{ start: 2, end: 4, row: 3 }}
                 styles={{ fontSize: '18px', margin: '16px 0' }}

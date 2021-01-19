@@ -5,6 +5,7 @@ import { getGeneratorConditionalOperations } from "../state/generator/generatorS
 import { TableOperation } from "../types/Generator";
 import { ConditionalRollTableRow } from "./ConditionalRollTableRow";
 import { PrimaryButton } from "./shared/PrimaryButton";
+import { SubLayout } from "./shared/SubLayout";
 
 const defaultOperation: TableOperation = {
   currentTableIndex: '',
@@ -26,19 +27,19 @@ export const ConditionalRollTable: React.FC = () => {
   const addConditionalOperation = useCallback(() => dispatch(addConditionalOperationAction(defaultOperation)), [dispatch]);
 
   return (
-    <React.Fragment>
-      Conditional Roll Operations
-      Roll on table 1 then:
-      { conditionalOperations.map(({ currentTableIndex, entryIndexs, nextTableIndex }: TableOperation, index: number) => (
-        <ConditionalRollTableRow
-          currentTableIndex={currentTableIndex}
-          entryIndexs={entryIndexs}
-          nextTableIndex={nextTableIndex}
-          updateConditionalOperation={updateConditionalOperation(index)}
-          removeConditionalOperation={removeConditionalOperation(index)}
-        />
-      )) }
-      <PrimaryButton onClick={addConditionalOperation}>Add Operation</PrimaryButton>
-    </React.Fragment>
+      <SubLayout>
+        Conditional Roll Operations
+        Roll on table 1 then:
+        { conditionalOperations.map(({ currentTableIndex, entryIndexs, nextTableIndex }: TableOperation, index: number) => (
+          <ConditionalRollTableRow
+            currentTableIndex={currentTableIndex}
+            entryIndexs={entryIndexs}
+            nextTableIndex={nextTableIndex}
+            updateConditionalOperation={updateConditionalOperation(index)}
+            removeConditionalOperation={removeConditionalOperation(index)}
+          />
+        )) }
+        <PrimaryButton onClick={addConditionalOperation}>Add Operation</PrimaryButton>
+    </SubLayout>
   );
 }
