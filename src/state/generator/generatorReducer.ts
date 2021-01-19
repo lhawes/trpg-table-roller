@@ -1,5 +1,5 @@
 import { AnyAction } from "../../types/anyAction";
-import { RPGGenerator } from "../../types/Generator";
+import { RPGGenerator, TableOperation } from "../../types/Generator";
 import { GeneratorActionTypes } from "./generatorActionTypes";
 import { getGeneratorSection } from "./generatorSelectors";
 
@@ -38,6 +38,8 @@ export const generatorReducer = (state: RPGGenerator = generatorInitialState, ac
       newState.generatorName = generatorName;
       return newState;
     }
+
+    // tables
     case GeneratorActionTypes.ADD_TABLE: {
       const newTable = action.payload;
       newState.tables.push(newTable);
@@ -50,6 +52,7 @@ export const generatorReducer = (state: RPGGenerator = generatorInitialState, ac
       ]
       return newState;
     }
+
     case GeneratorActionTypes.CHANGE_TABLE_NAME: {
       const {
         tableName,
@@ -58,6 +61,8 @@ export const generatorReducer = (state: RPGGenerator = generatorInitialState, ac
       newState.tables[tableIndex].name = tableName;
       return newState;
     }
+
+    // table entries
     case GeneratorActionTypes.ADD_TABLE_ENTRY: {
       const {
         tableIndex,
@@ -85,6 +90,8 @@ export const generatorReducer = (state: RPGGenerator = generatorInitialState, ac
       newState.tables[tableIndex].entries[tableEntryIndex] = tableEntry;
       return newState;
     }
+
+    // histories
     case GeneratorActionTypes.ADD_TO_HISTORY: {
       const { tableRollResult } = action.payload;
       newState.history.push(tableRollResult);
@@ -94,6 +101,28 @@ export const generatorReducer = (state: RPGGenerator = generatorInitialState, ac
       newState.history = [];
       return newState;
     }
+
+    // conditional roll operations
+    case GeneratorActionTypes.ADD_CONDITIONAL_OPERATION: {
+      const operation: TableOperation = action.payload.operationAttributes;
+      newState.operations.push(operation);
+      return newState;
+    }
+    case GeneratorActionTypes.REMOVE_CONDITIONAL_OPERATION: {
+      const { operationIndex } = action.payload;
+
+      newState.operations = [
+        ...newState.operations.filter((_v, i: number) => i !== operationIndex)
+      ]
+      return newState;
+    }
+    case GeneratorActionTypes.CHANGE_CONDITIONAL_OPERATION: {
+      const { operationIndex, operationAttributes } = action.payload;
+
+      newState.operations[operationIndex] = operationAttributes;
+      return newState;
+    }
+
     default:
       return newState;
   }

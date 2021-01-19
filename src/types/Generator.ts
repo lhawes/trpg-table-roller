@@ -10,9 +10,9 @@ export interface RPGGenerator {
 }
 
 export interface TableOperation {
-  currentTableIndex: number,
-  entryIndexs: number[], // array of entry indexs that trigger the result,
-  nextTableIndex: number, // not currentTableIndex
+  currentTableIndex: string,
+  entryIndexs: string, // array of entry indexs that trigger the result,
+  nextTableIndex: string, // not currentTableIndex
 }
 
 /*
