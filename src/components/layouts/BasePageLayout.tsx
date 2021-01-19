@@ -7,7 +7,7 @@ import { FileUploadInput } from '../FileUploadInput';
 import { GeneratorName } from '../GeneratorName';
 import { HistoryList } from '../HistoryList';
 import { LoadExampleDataButton } from '../LoadExampleDataButton';
-import { RollOnTableButton } from '../RollOnTableButton';
+import { BasicRollOnTableButton } from '../BasicRollOnTableButton';
 import { BodyContainer } from '../shared/BodyContainer';
 import { GridCell } from '../shared/GridCell';
 import { Section } from '../shared/Section';
@@ -15,6 +15,7 @@ import { SubLayout } from '../shared/SubLayout';
 import { TabSkeleton } from '../shared/TabSkeleton';
 import { TableListLayout } from './TableListLayout';
 import { TextTemplateLayout } from './TextTemplateLayout'
+import { ConditionalRollOnTableButton } from '../ConditionalRollOnTableButton';
 
 const textTemplateLayoutStyles = css({
   gridColumnStart: 1,
@@ -62,12 +63,12 @@ export const BasePageLayout: React.FC = () => {
           <GridCell position={{ col: 1, row: 1 }} ><GeneratorName style={generatorNameStyles} /></GridCell>
           <GridCell position={{ col: 1, row: 2 }} ><TableListLayout /></GridCell>
         </SubLayout>
-        <TabSkeleton tabs={[{
+        <TabSkeleton initialTab={1} tabs={[{
           name: 'Basic Roll',
           component: (
             <SubLayout layout={basicRollGridLayout}>
               <TextTemplateLayout style={textTemplateLayoutStyles} />
-              <GridCell position={{ row: 2, start: 1, end: 3 }}><RollOnTableButton /></GridCell>
+              <GridCell position={{ row: 2, start: 1, end: 3 }}><BasicRollOnTableButton /></GridCell>
               <GridCell
                 position={{ start: 2, end: 4, row: 2 }}
                 styles={{ fontSize: '18px', margin: '16px 0' }}
@@ -84,7 +85,7 @@ export const BasePageLayout: React.FC = () => {
             component: (
             <SubLayout layout={conditionalRollGridLayout}>
               <GridCell position={{ col: 1, row: 2 }}><ConditionalRollTable /></GridCell>
-              <GridCell position={{ row: 3, start: 1, end: 3 }}><RollOnTableButton /></GridCell>
+                <GridCell position={{ row: 3, start: 1, end: 3 }}><ConditionalRollOnTableButton /></GridCell>
               <GridCell
                 position={{ start: 2, end: 4, row: 3 }}
                 styles={{ fontSize: '18px', margin: '16px 0' }}
