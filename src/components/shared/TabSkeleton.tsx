@@ -1,24 +1,36 @@
 import React from "react";
 import { useState } from "react";
 import { PrimaryButton } from "./PrimaryButton";
+import { SecondaryButton } from "./SecondaryButton";
 import { SubLayout } from "./SubLayout";
 
-interface TabSkeletonProps {
-  components: React.ReactNode[]
+interface Tab {
+  component: React.ReactNode;
+  name: string;
 }
 
-export const TabSkeleton: React.FC<TabSkeletonProps> = ({ components }) => {
-  const [tabIndex, setTabIndex] = useState(1);
+interface TabSkeletonProps {
+  tabs: Tab[];
+  initialTab?: number;
+}
+
+export const TabSkeleton: React.FC<TabSkeletonProps> = ({ tabs, initialTab = 0 }) => {
+  const [tabIndex, setTabIndex] = useState(initialTab);
 
   return (
     <React.Fragment>
       <SubLayout>
-        <div>{ components.map((_component, index) => (
-          <PrimaryButton onClick={() => setTabIndex(index)} >
-            Tab { index }
-          </PrimaryButton>
-        )) }</div>
-        { components[tabIndex] }
+        <div>{ tabs.map((tab: Tab, index) => {
+          if (index === tabIndex) {
+            return (<SecondaryButton onClick={() => setTabIndex(index)} >
+              { tab.name}
+            </SecondaryButton>);
+          }
+          return (<PrimaryButton onClick={() => setTabIndex(index)} >
+              { tab.name }
+            </PrimaryButton>);
+          }) }</div>
+        { tabs[tabIndex].component }
       </SubLayout>
     </React.Fragment>
   );
