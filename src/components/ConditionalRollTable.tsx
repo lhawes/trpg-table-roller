@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { jsx, css } from '@emotion/react'
 import React, { useCallback, useContext } from "react";
 import { DispatchContext, StateContext } from "../App";
 import { addConditionalOperationAction, changeConditionalOperationAction, removeConditionalOperationAction } from "../state/generator/generatorActions";
@@ -13,6 +15,14 @@ const defaultOperation: TableOperation = {
   entryIndexs: '',
 }
 
+const conditionalRollLayout = css({
+  rowGap: '1rem'
+});
+
+const addConditionButtonStyle = css({
+  marginTop: '0'
+})
+
 export const ConditionalRollTable: React.FC = () => {
   const state = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
@@ -27,7 +37,7 @@ export const ConditionalRollTable: React.FC = () => {
   const addConditionalOperation = useCallback(() => dispatch(addConditionalOperationAction(defaultOperation)), [dispatch]);
 
   return (
-      <SubLayout>
+    <SubLayout layout={conditionalRollLayout}>
         Conditional Roll Operations
         Roll on table 1 then:
         { conditionalOperations.map(({ currentTableIndex, entryIndexs, nextTableIndex }: TableOperation, index: number) => (
@@ -39,7 +49,7 @@ export const ConditionalRollTable: React.FC = () => {
             removeConditionalOperation={removeConditionalOperation(index)}
           />
         )) }
-        <PrimaryButton onClick={addConditionalOperation}>Add Operation</PrimaryButton>
+      <PrimaryButton style={addConditionButtonStyle} onClick={addConditionalOperation}>Add Operation</PrimaryButton>
     </SubLayout>
   );
 }
