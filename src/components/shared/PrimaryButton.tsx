@@ -13,7 +13,7 @@ const primaryButtonStyle = css({
   backgroundColor: redScheme.highlightPallette.secondary,
   color: 'white',
   width: 'auto',
-  padding: '8px',
+  padding: '0.5rem',
   margin: '1rem 0',
 })
 
