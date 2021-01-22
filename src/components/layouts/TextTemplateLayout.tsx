@@ -22,7 +22,7 @@ const previewStyle = css({
 
 const textTemplateTitleStyle = css({
   fontSize: '18px',
-  margin: '16px 0',
+  margin: '1rem 0',
 });
 
 export interface TextTemplateLayoutProps {

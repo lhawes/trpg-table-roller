@@ -27,7 +27,7 @@ const textTemplateLayoutStyles = css({
 const pageLayout = css({
   gridTemplateColumns: `1fr 1fr`,
   gridTemplateRows: 'auto',
-  columnGap: '12px'
+  columnGap: '1rem'
 })
 
 const tableGridLayout = css({
@@ -65,7 +65,7 @@ export const BasePageLayout: React.FC = () => {
         <GridCell position={{ row: 2, start: 1, end: 3 }}><BasicRollOnTableButton /></GridCell>
         <GridCell
           position={{ start: 2, end: 4, row: 2 }}
-          styles={{ fontSize: '18px', margin: '16px 0' }}
+          styles={{ fontSize: '18px', margin: '1rem 0' }}
         >Table Roll Results:</GridCell>
         <GridCell position={{ start: 1, end: 4, row: 3 }}><HistoryList /></GridCell>
         <GridCell position={{ col: 1, row: 4 }}><ExportDataButton /></GridCell>
@@ -82,7 +82,7 @@ export const BasePageLayout: React.FC = () => {
         <GridCell position={{ row: 3, start: 1, end: 3 }}><ConditionalRollOnTableButton /></GridCell>
         <GridCell
           position={{ start: 2, end: 4, row: 3 }}
-          styles={{ fontSize: '18px', margin: '16px 0' }}
+          styles={{ fontSize: '18px', margin: '1rem 0' }}
         >Conditional Roll Results:</GridCell>
         <GridCell position={{ start: 1, end: 4, row: 4 }}><HistoryList /></GridCell>
         <GridCell position={{ col: 1, row: 5 }}><ExportDataButton /></GridCell>
@@ -90,7 +90,8 @@ export const BasePageLayout: React.FC = () => {
         <GridCell position={{ col: 3, row: 5 }} styles={{ justifySelf: 'end' }}><ClearHistory /></GridCell>
         <GridCell position={{ col: 1, row: 6 }}><LoadExampleDataButton /></GridCell>
       </SubLayout>)
-  }], []);
+  },
+], []);
 
   return (
     <BodyContainer>
