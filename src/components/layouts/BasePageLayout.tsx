@@ -12,10 +12,11 @@ import { BodyContainer } from '../shared/BodyContainer';
 import { GridCell } from '../shared/GridCell';
 import { Section } from '../shared/Section';
 import { SubLayout } from '../shared/SubLayout';
-import { TabSkeleton } from '../shared/TabSkeleton';
+import { Tab, TabSkeleton } from '../shared/TabSkeleton';
 import { TableListLayout } from './TableListLayout';
 import { TextTemplateLayout } from './TextTemplateLayout'
 import { ConditionalRollOnTableButton } from '../ConditionalRollOnTableButton';
+import { useMemo } from 'react';
 
 const textTemplateLayoutStyles = css({
   gridColumnStart: 1,
@@ -26,7 +27,7 @@ const textTemplateLayoutStyles = css({
 const pageLayout = css({
   gridTemplateColumns: `1fr 1fr`,
   gridTemplateRows: 'auto',
-  columnGap: '12px'
+  columnGap: '1rem'
 })
 
 const tableGridLayout = css({
@@ -56,6 +57,42 @@ const generatorNameStyles = css({
 });
 
 export const BasePageLayout: React.FC = () => {
+  const tabs: Tab[] = useMemo(() => [{
+    name: 'Basic Roll',
+    component: (
+      <SubLayout layout={basicRollGridLayout}>
+        <TextTemplateLayout style={textTemplateLayoutStyles} />
+        <GridCell position={{ row: 2, start: 1, end: 3 }}><BasicRollOnTableButton /></GridCell>
+        <GridCell
+          position={{ start: 2, end: 4, row: 2 }}
+          styles={{ fontSize: '18px', margin: '1rem 0' }}
+        >Table Roll Results:</GridCell>
+        <GridCell position={{ start: 1, end: 4, row: 3 }}><HistoryList /></GridCell>
+        <GridCell position={{ col: 1, row: 4 }}><ExportDataButton /></GridCell>
+        <GridCell position={{ col: 2, row: 4 }} styles={{ justifySelf: 'middle' }}><FileUploadInput /></GridCell>
+        <GridCell position={{ col: 3, row: 4 }} styles={{ justifySelf: 'end' }}><ClearHistory /></GridCell>
+        <GridCell position={{ col: 1, row: 5 }}><LoadExampleDataButton /></GridCell>
+      </SubLayout>)
+  },
+  {
+    name: 'Conditional Roll',
+    component: (
+      <SubLayout layout={conditionalRollGridLayout}>
+        <GridCell position={{ col: 1, row: 2, start: 1, end: 4 }}><ConditionalRollTable /></GridCell>
+        <GridCell position={{ row: 3, start: 1, end: 3 }}><ConditionalRollOnTableButton /></GridCell>
+        <GridCell
+          position={{ start: 2, end: 4, row: 3 }}
+          styles={{ fontSize: '18px', margin: '1rem 0' }}
+        >Conditional Roll Results:</GridCell>
+        <GridCell position={{ start: 1, end: 4, row: 4 }}><HistoryList /></GridCell>
+        <GridCell position={{ col: 1, row: 5 }}><ExportDataButton /></GridCell>
+        <GridCell position={{ col: 2, row: 5 }} styles={{ justifySelf: 'middle' }}><FileUploadInput /></GridCell>
+        <GridCell position={{ col: 3, row: 5 }} styles={{ justifySelf: 'end' }}><ClearHistory /></GridCell>
+        <GridCell position={{ col: 1, row: 6 }}><LoadExampleDataButton /></GridCell>
+      </SubLayout>)
+  },
+], []);
+
   return (
     <BodyContainer>
       <Section layout={pageLayout}>
@@ -63,41 +100,7 @@ export const BasePageLayout: React.FC = () => {
           <GridCell position={{ col: 1, row: 1 }} ><GeneratorName style={generatorNameStyles} /></GridCell>
           <GridCell position={{ col: 1, row: 2 }} ><TableListLayout /></GridCell>
         </SubLayout>
-        <TabSkeleton initialTab={1} tabs={[{
-          name: 'Basic Roll',
-          component: (
-            <SubLayout layout={basicRollGridLayout}>
-              <TextTemplateLayout style={textTemplateLayoutStyles} />
-              <GridCell position={{ row: 2, start: 1, end: 3 }}><BasicRollOnTableButton /></GridCell>
-              <GridCell
-                position={{ start: 2, end: 4, row: 2 }}
-                styles={{ fontSize: '18px', margin: '16px 0' }}
-              >Table Roll Results:</GridCell>
-              <GridCell position={{ start: 1, end: 4, row: 3 }}><HistoryList /></GridCell>
-              <GridCell position={{ col: 1, row: 4 }}><ExportDataButton /></GridCell>
-              <GridCell position={{ col: 2, row: 4 }} styles={{ justifySelf: 'middle' }}><FileUploadInput /></GridCell>
-              <GridCell position={{ col: 3, row: 4 }} styles={{ justifySelf: 'end' }}><ClearHistory /></GridCell>
-              <GridCell position={{ col: 1, row: 5 }}><LoadExampleDataButton /></GridCell>
-            </SubLayout>)
-          },
-          {
-            name: 'Conditional Roll',
-            component: (
-            <SubLayout layout={conditionalRollGridLayout}>
-              <GridCell position={{ col: 1, row: 2, start: 1, end: 4 }}><ConditionalRollTable /></GridCell>
-              <GridCell position={{ row: 3, start: 1, end: 3 }}><ConditionalRollOnTableButton /></GridCell>
-              <GridCell
-                position={{ start: 2, end: 4, row: 3 }}
-                styles={{ fontSize: '18px', margin: '16px 0' }}
-              >Conditional Roll Results:</GridCell>
-              <GridCell position={{ start: 1, end: 4, row: 4 }}><HistoryList /></GridCell>
-              <GridCell position={{ col: 1, row: 5 }}><ExportDataButton /></GridCell>
-              <GridCell position={{ col: 2, row: 5 }} styles={{ justifySelf: 'middle' }}><FileUploadInput /></GridCell>
-              <GridCell position={{ col: 3, row: 5 }} styles={{ justifySelf: 'end' }}><ClearHistory /></GridCell>
-              <GridCell position={{ col: 1, row: 6 }}><LoadExampleDataButton /></GridCell>
-            </SubLayout>)
-          }
-        ]} />
+        <TabSkeleton initialTab={1} tabs={tabs} />
       </Section>
     </BodyContainer>
   );

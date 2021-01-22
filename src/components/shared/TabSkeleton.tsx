@@ -1,10 +1,11 @@
-import React from "react";
-import { useState } from "react";
+/** @jsx jsx */
+import { jsx, css } from "@emotion/react";
+import { useCallback, useState } from "react";
 import { PrimaryButton } from "./PrimaryButton";
 import { SecondaryButton } from "./SecondaryButton";
 import { SubLayout } from "./SubLayout";
 
-interface Tab {
+export interface Tab {
   component: React.ReactNode;
   name: string;
 }
@@ -14,24 +15,39 @@ interface TabSkeletonProps {
   initialTab?: number;
 }
 
+const tabLayoutStyle = css({
+  gridTemplateColumns: `1fr`,
+  gridTemplateRows: '63px auto',
+});
+
+const tabHeaderStyle = css({
+  display: 'grid',
+  columnGap: '1rem',
+});
+
 export const TabSkeleton: React.FC<TabSkeletonProps> = ({ tabs, initialTab = 0 }) => {
   const [tabIndex, setTabIndex] = useState(initialTab);
 
+  const getButtonGridPositionStyle = useCallback((index: number) => css({
+    gridRow: 1,
+    gridColumn: index + 1
+  }), [])
+
   return (
-    <React.Fragment>
-      <SubLayout>
-        <div>{ tabs.map((tab: Tab, index) => {
+    <SubLayout layout={tabLayoutStyle}>
+        <div css={tabHeaderStyle}>{ tabs.map((tab: Tab, index) => {
+          const style = getButtonGridPositionStyle(index);
           if (index === tabIndex) {
-            return (<SecondaryButton onClick={() => setTabIndex(index)} >
+            return (<PrimaryButton style={style} onClick={() => setTabIndex(index)} >
               { tab.name}
-            </SecondaryButton>);
-          }
-          return (<PrimaryButton onClick={() => setTabIndex(index)} >
-              { tab.name }
             </PrimaryButton>);
-          }) }</div>
+          }
+          return (<SecondaryButton style={style} onClick={() => setTabIndex(index)} >
+              { tab.name }
+          </SecondaryButton>);
+          }) }
+        </div>
         { tabs[tabIndex].component }
       </SubLayout>
-    </React.Fragment>
   );
 }

@@ -14,7 +14,7 @@ const secondaryButtonStyle = css({
   color: 'white',
   width: 'auto',
   padding: '8px',
-  margin: '16px 0',
+  margin: '1rem 0',
 })
 
 export const SecondaryButton: React.FC<SecondaryButtonProps> = ({
