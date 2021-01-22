@@ -6,7 +6,7 @@ import { updateStateFromFileAction } from "../state/generator/generatorActions";
 import { getFile, uploadInputId } from "../utils/uploadFile";
 
 const uploadStyle = css({
-  margin: '16px',
+  margin: '1rem',
 })
 
 export const FileUploadInput: React.FC = () => {
