@@ -4,7 +4,7 @@ import { PrimaryButton } from "./PrimaryButton";
 import { SecondaryButton } from "./SecondaryButton";
 import { SubLayout } from "./SubLayout";
 
-interface Tab {
+export interface Tab {
   component: React.ReactNode;
   name: string;
 }
