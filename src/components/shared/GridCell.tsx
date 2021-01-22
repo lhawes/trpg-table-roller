@@ -7,8 +7,10 @@ interface GridCellProps {
   position?: {
     col?: number;
     row?: number;
-    start?: number;
-    end?: number;
+    cstart?: number;
+    cend?: number;
+    rstart?: number;
+    rend?: number;
   }
   styles?: Record<string, any>;
 }
@@ -17,8 +19,10 @@ export const GridCell: React.FC<GridCellProps> = ({ styles, position = {}, child
   const gridStyle = useMemo(() => css({
     gridColumn: position.col,
     gridRow: position.row,
-    gridColumnStart: position.start,
-    gridColumnEnd: position.end,
+    gridColumnStart: position.cstart,
+    gridColumnEnd: position.cend,
+    gridRowStart: position.rstart,
+    gridRowEnd: position.rend,
     ...styles,
   }), [styles, position, children]);
   return (<div css={gridStyle}>{ children }</div>);

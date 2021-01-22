@@ -42,7 +42,7 @@ const basicRollGridLayout = css({
 
 const conditionalRollGridLayout = css({
   gridTemplateColumns: `1fr 1fr 1fr `,
-  gridTemplateRows: 'auto auto 1fr auto',
+  gridTemplateRows: 'auto auto auto 1fr auto',
 })
 
 const generatorNameStyles = css({
@@ -62,12 +62,12 @@ export const BasePageLayout: React.FC = () => {
     component: (
       <SubLayout layout={basicRollGridLayout}>
         <TextTemplateLayout style={textTemplateLayoutStyles} />
-        <GridCell position={{ row: 2, start: 1, end: 3 }}><BasicRollOnTableButton /></GridCell>
+        <GridCell position={{ row: 2, cstart: 1, cend: 3 }}><BasicRollOnTableButton /></GridCell>
         <GridCell
-          position={{ start: 2, end: 4, row: 2 }}
+          position={{ cstart: 2, cend: 4, row: 2 }}
           styles={{ fontSize: '18px', margin: '1rem 0' }}
         >Table Roll Results:</GridCell>
-        <GridCell position={{ start: 1, end: 4, row: 3 }}><HistoryList /></GridCell>
+        <GridCell position={{ cstart: 1, cend: 4, row: 3 }}><HistoryList /></GridCell>
         <GridCell position={{ col: 1, row: 4 }}><ExportDataButton /></GridCell>
         <GridCell position={{ col: 2, row: 4 }} styles={{ justifySelf: 'middle' }}><FileUploadInput /></GridCell>
         <GridCell position={{ col: 3, row: 4 }} styles={{ justifySelf: 'end' }}><ClearHistory /></GridCell>
@@ -78,13 +78,13 @@ export const BasePageLayout: React.FC = () => {
     name: 'Conditional Roll',
     component: (
       <SubLayout layout={conditionalRollGridLayout}>
-        <GridCell position={{ col: 1, row: 2, start: 1, end: 4 }}><ConditionalRollTable /></GridCell>
-        <GridCell position={{ row: 3, start: 1, end: 3 }}><ConditionalRollOnTableButton /></GridCell>
+        <GridCell position={{ col: 1, row: 2, cstart: 1, cend: 4 }}><ConditionalRollTable /></GridCell>
+        <GridCell position={{ row: 3, cstart: 1, cend: 3 }}><ConditionalRollOnTableButton /></GridCell>
         <GridCell
-          position={{ start: 2, end: 4, row: 3 }}
+          position={{ cstart: 2, cend: 4, row: 3 }}
           styles={{ fontSize: '18px', margin: '1rem 0' }}
         >Conditional Roll Results:</GridCell>
-        <GridCell position={{ start: 1, end: 4, row: 4 }}><HistoryList /></GridCell>
+        <GridCell position={{ cstart: 1, cend: 4, row: 4 }}><HistoryList /></GridCell>
         <GridCell position={{ col: 1, row: 5 }}><ExportDataButton /></GridCell>
         <GridCell position={{ col: 2, row: 5 }} styles={{ justifySelf: 'middle' }}><FileUploadInput /></GridCell>
         <GridCell position={{ col: 3, row: 5 }} styles={{ justifySelf: 'end' }}><ClearHistory /></GridCell>

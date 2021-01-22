@@ -11,10 +11,11 @@ Request: Add weighted entry mechanic
 Request: Output as csv
 Fix:     Click roll from initial state adds an entry?
 Feature: Allow user to specify whether the same results are allowed for multi rolls ({{1}}, {{1}} => cat, cat)
-Feature: Add numbers for each table entry
 Feature: Add wildcard for conditional table roll
-Fix:     Styling for conditional rolling table
 Feature: Add conditional rolling specific example data
+Fix:     Lost of data results in slow table entry update time
+Feature: Conditional rolling, if table <number or name>, then roll on <number or name>
+Feature: Add Guide or tips tab to explain how the table roller works
 
 
 Styles:
