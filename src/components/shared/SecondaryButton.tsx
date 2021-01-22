@@ -13,7 +13,7 @@ const secondaryButtonStyle = css({
   backgroundColor: redScheme.highlightPallette.blue,
   color: 'white',
   width: 'auto',
-  padding: '8px',
+  padding: '0.5rem',
   margin: '1rem 0',
 })
 

@@ -7,7 +7,7 @@ import { AppState } from '../state/rootInitialState';
 
 const historyEntryStyle = css({
   display: 'block',
-  margin: '8px',
+  margin: '0.5rem',
   fontStyle: 'italic',
 });
 

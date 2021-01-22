@@ -1,6 +1,5 @@
 Ideas for the trpg table generator:
 Style:   Add different styling options to match classic tables published in dnd books
-Feature: Conditionally roll on table based on result
 Feature: Change file structure to be easy to edit (not JSON)
 Feature: Swap between giant text interpreter or table mode
 Feature: Some way to share tables between people
@@ -12,6 +11,10 @@ Request: Add weighted entry mechanic
 Request: Output as csv
 Fix:     Click roll from initial state adds an entry?
 Feature: Allow user to specify whether the same results are allowed for multi rolls ({{1}}, {{1}} => cat, cat)
+Feature: Add numbers for each table entry
+Feature: Add wildcard for conditional table roll
+Fix:     Styling for conditional rolling table
+Feature: Add conditional rolling specific example data
 
 
 Styles:

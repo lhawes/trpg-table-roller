@@ -9,7 +9,7 @@ const headerContainerStyle = css({
 const headerStyle = css({
   backgroundColor: 'black',
   color: 'white',
-  padding: '8px'
+  padding: '0.5rem'
 });
 
 const siteNameTitleStyle = css({

@@ -33,13 +33,13 @@ export interface TableComponentLayoutProps {
 }
 
 const IndividualTableGrid = css({
-  gridTemplateColumns: `1fr ${inputWidth}`,
+  gridTemplateColumns: `${inputWidth} 1fr ${inputWidth}`,
   gridTemplateRows: `1fr`,
 });
 
 const tableNameStyle = css({
   gridColumnStart: 1,
-  gridColumnEnd: 3,
+  gridColumnEnd: 4,
   gridRow: 1,
 })
 
@@ -58,13 +58,18 @@ const removeButtonStyle = css({
   appearance: 'none',
   backgroundColor: 'transparent',
   '&:hover,&:focus': {},
-  // height: `${inputHeight} + 1px`,
   padding: '0 0 1px 0'
 });
 
 const coloredEntryStyle = css({
   backgroundColor: redScheme.highlightPallette.primary,
-})
+});
+
+const tableNumberStyle = css({
+  padding: '0 0 1px 0',
+  lineHeight: '24px',
+  textAlign: 'right',
+});
 
 export const TableComponentLayout: React.FC<TableComponentLayoutProps> = ({ table, tableIndex }) => {
   const dispatch = useContext(DispatchContext);
@@ -87,6 +92,7 @@ export const TableComponentLayout: React.FC<TableComponentLayoutProps> = ({ tabl
               onKeyDown = handleLastEntryEnterKey;
             }
             return [
+              <div css={css(tableNumberStyle, addStyle)}>{entryIndex + 1}</div>,
               <UserInputPrimary tabIndex={entryIndex} onKeyDown={onKeyDown} style={addStyle} value={value} onChange={changeEntry} key={`table-entry-${entryIndex}`} placeHolder='Entry text'/>,
               <button css={css(removeButtonStyle, addStyle)} onClick={removeEntry} key={`close-table-entry-${entryIndex}`}>X</button>
             ];
