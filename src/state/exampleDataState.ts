@@ -1,7 +1,7 @@
 import { RPGGenerator } from '../types/Generator';
 import { generatorStateKey } from './generator/generatorReducer';
 
-export const exampleDataState: Record<string, RPGGenerator> = {
+export const basicExampleDataState: Record<string, RPGGenerator> = {
   [generatorStateKey]: {
     generatorName: 'Potion Maker',
     textTemplate: 'A {{1}} that {{2}} {{3}}. If ingested it will {{4}}, but will also {{5}} and {{5}}.',
@@ -63,14 +63,69 @@ export const exampleDataState: Record<string, RPGGenerator> = {
           'magically fix the drinker on the spot'
         ]
       }],
-    operations: [{
-      currentTableIndex: '1',
-      entryIndexs: '1, 2, 3, 4',
-      nextTableIndex: '2',
-    }],
+    operations: [],
     history: [
       'A ceramic Elven vase that smells like dung and looks worse than it smells. If ingested it will reduce the gravity affecting the drinker, but will also make the consumer break out in hives.'
     ],
     version: 1,
   },
+}
+export const conditionalExampleDataState: Record<string, RPGGenerator> = {
+  [generatorStateKey]: {
+    "generatorName": "Magic Loot Generator",
+    "textTemplate": "",
+    "tables": [
+      {
+        "name": "Type of Loot",
+        "entries": [
+          "Magical Armor",
+          "An Enchanted Weapon",
+          "Golden Coins"
+        ]
+      },
+      {
+        "name": "Armor",
+        "entries": [
+          "that protects against cold ",
+          "that is supernaturally light "
+        ]
+      },
+      {
+        "name": "Weapon",
+        "entries": [
+          "that produces acid on the blade",
+          "with a blade wreathed in flame"
+        ]
+      },
+      {
+        "name": "Coin Amount",
+        "entries": [
+          "(30)",
+          "(10)",
+          "(100)"
+        ]
+      }
+    ],
+    "operations": [
+      {
+        "currentTableIndex": "1",
+        "entryIndexs": "1",
+        "nextTableIndex": "2"
+      },
+      {
+        "currentTableIndex": "1",
+        "entryIndexs": "2",
+        "nextTableIndex": "3"
+      },
+      {
+        "currentTableIndex": "1",
+        "entryIndexs": "3",
+        "nextTableIndex": "4"
+      }
+    ],
+    "history": [
+      "Golden Coins(10)",
+    ],
+    "version": 1
+  }
 }

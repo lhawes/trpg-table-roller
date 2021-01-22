@@ -6,7 +6,7 @@ import { ExportDataButton } from '../ExportDataButton';
 import { FileUploadInput } from '../FileUploadInput';
 import { GeneratorName } from '../GeneratorName';
 import { HistoryList } from '../HistoryList';
-import { LoadExampleDataButton } from '../LoadExampleDataButton';
+import { LoadBasicExampleDataButton } from '../LoadBasicExampleDataButton';
 import { BasicRollOnTableButton } from '../BasicRollOnTableButton';
 import { BodyContainer } from '../shared/BodyContainer';
 import { GridCell } from '../shared/GridCell';
@@ -17,6 +17,7 @@ import { TableListLayout } from './TableListLayout';
 import { TextTemplateLayout } from './TextTemplateLayout'
 import { ConditionalRollOnTableButton } from '../ConditionalRollOnTableButton';
 import { useMemo } from 'react';
+import { LoadConditionalExampleDataButton } from '../LoadConditionalExampleDataButton';
 
 const textTemplateLayoutStyles = css({
   gridColumnStart: 1,
@@ -71,7 +72,7 @@ export const BasePageLayout: React.FC = () => {
         <GridCell position={{ col: 1, row: 4 }}><ExportDataButton /></GridCell>
         <GridCell position={{ col: 2, row: 4 }} styles={{ justifySelf: 'middle' }}><FileUploadInput /></GridCell>
         <GridCell position={{ col: 3, row: 4 }} styles={{ justifySelf: 'end' }}><ClearHistory /></GridCell>
-        <GridCell position={{ col: 1, row: 5 }}><LoadExampleDataButton /></GridCell>
+        <GridCell position={{ col: 1, row: 5 }}><LoadBasicExampleDataButton /></GridCell>
       </SubLayout>)
   },
   {
@@ -88,7 +89,7 @@ export const BasePageLayout: React.FC = () => {
         <GridCell position={{ col: 1, row: 5 }}><ExportDataButton /></GridCell>
         <GridCell position={{ col: 2, row: 5 }} styles={{ justifySelf: 'middle' }}><FileUploadInput /></GridCell>
         <GridCell position={{ col: 3, row: 5 }} styles={{ justifySelf: 'end' }}><ClearHistory /></GridCell>
-        <GridCell position={{ col: 1, row: 6 }}><LoadExampleDataButton /></GridCell>
+        <GridCell position={{ col: 1, row: 6 }}><LoadConditionalExampleDataButton /></GridCell>
       </SubLayout>)
   },
 ], []);

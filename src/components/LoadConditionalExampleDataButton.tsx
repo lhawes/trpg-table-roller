@@ -1,15 +1,15 @@
 import React, { useCallback } from "react"
 import { useContext } from "react"
 import { DispatchContext } from "../App"
-import { exampleDataState } from "../state/exampleDataState"
+import { conditionalExampleDataState } from "../state/exampleDataState"
 import { updateStateFromFileAction } from "../state/generator/generatorActions"
 import { SecondaryButton } from "./shared/SecondaryButton"
 
-export const LoadExampleDataButton: React.FC = () => {
+export const LoadConditionalExampleDataButton: React.FC = () => {
   const dispatch = useContext(DispatchContext);
-const loadExampleDataHandler = useCallback( () => {
-  dispatch(updateStateFromFileAction(exampleDataState))
-}, [dispatch]);
+  const loadExampleDataHandler = useCallback(() => {
+    dispatch(updateStateFromFileAction(conditionalExampleDataState))
+  }, [dispatch]);
   return (
     <SecondaryButton onClick={loadExampleDataHandler}>Load Example Data</SecondaryButton>
   )
