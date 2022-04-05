@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: trpg-table-roller
+  annotations:
+    github.com/project-slug: lhawes/trpg-table-roller
+spec:
+  type: other
+  lifecycle: unknown
+  owner: Lucas-test-group
