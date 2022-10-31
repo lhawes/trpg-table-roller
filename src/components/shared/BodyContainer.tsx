@@ -1,4 +1,4 @@
-/** @jsx jsx */
+/** @jsxImportSource @emotion/react */
 import { jsx, css, SerializedStyles } from "@emotion/react";
 import { useMemo } from "react";
 

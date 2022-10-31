@@ -6,7 +6,9 @@
       "dom.iterable",
       "esnext"
     ],
-    "types": ["@emotion/react/types/css-prop"],
+    "types": [
+      "@emotion/react/types/css-prop"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -19,8 +21,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react",
-    // "jsx": "react-jsx", from login
+    "jsx": "react-jsx"
   },
   "include": [
     "src"

@@ -1,4 +1,4 @@
-/** @jsx jsx */
+/** @jsxImportSource @emotion/react */
 import { jsx, SerializedStyles } from '@emotion/react';
 import { ChangeEvent } from 'react';
 

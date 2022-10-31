@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx, css } from '@emotion/react'
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react'
 import { ChangeEvent, useCallback, useContext } from "react";
 import { DispatchContext } from '../../App';
 import { inputHeight, inputWidth, redScheme } from '../../constants/styleConstants';

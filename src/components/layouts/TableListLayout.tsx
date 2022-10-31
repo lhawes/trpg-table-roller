@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx, css } from '@emotion/react'
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react'
 import { useContext, useCallback } from 'react'
 import { DispatchContext } from '../../App'
 import { addTableAction } from '../../state/generator/generatorActions'

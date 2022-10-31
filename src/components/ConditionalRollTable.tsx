@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx, css } from '@emotion/react'
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react'
 import React, { useCallback, useContext } from "react";
 import { DispatchContext, StateContext } from "../App";
 import { addConditionalOperationAction, changeConditionalOperationAction, removeConditionalOperationAction } from "../state/generator/generatorActions";

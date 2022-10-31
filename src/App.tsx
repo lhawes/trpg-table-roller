@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/react';
+/** @jsxImportSource @emotion/react */
+// import { jsx } from '@emotion/react';
 import React, { useReducer } from 'react';
 import { Header } from './components/Header';
 import { BasePageLayout } from './components/layouts/BasePageLayout';
@@ -57,7 +57,6 @@ const SignInRoute: React.FunctionComponent = () => (
       <Route path="/requestcode" component={RequestCode} />
       <Route path="/forgotpassword" component={ForgotPassword} />
       <Route path="/" component={Landing} />
-      <Route path="/roller" component={RollerApp} />
     </Switch>
   </Router>
 )
@@ -65,8 +64,9 @@ const SignInRoute: React.FunctionComponent = () => (
 const MainRoute: React.FunctionComponent = () => (
   <Router>
     <Switch>
+      <Route path="/roller" component={RollerApp} />
       <Route path="/changepassword" component={ChangePassword} />
-      <Route path="/" component={Home} />
+      <Route path="/home" component={Home} />
     </Switch>
   </Router>
 )
